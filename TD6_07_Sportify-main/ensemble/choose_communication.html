@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choisir le mode de communication</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Lien vers votre fichier CSS -->
+</head>
+<body>
+    <div class="communication-choice">
+        <h1>Choisissez votre mode de communication</h1>
+        <button onclick="chooseEmail()">Email</button>
+        <button onclick="chooseMessage()">Message</button>
+        <button onclick="chooseVideo()">Vidéo</button>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const toUserId = urlParams.get('to_user_id');
+
+        function chooseEmail() {
+            window.location.href = `email_form.html?to_user_id=${toUserId}`;
+        }
+
+        function chooseMessage() {
+            window.location.href = `chat.html?to_user_id=${toUserId}`;
+        }
+
+        function chooseVideo() {
+            window.location.href = `video_call.html?to_user_id=${toUserId}`;
+        }
+    </script>
+</body>
+</html>

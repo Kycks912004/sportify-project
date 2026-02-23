@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salle de sport Omnes - Sportify</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .salle-details {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            border-radius: 20px;
+            border: 2px solid #ccc;
+            border-image: url('border.png') 20 round;
+            background-color: #f9f9f9;
+        }
+
+        .salle-info {
+            margin-left: 20px;
+        }
+
+        .salle-image {
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .salle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: calc(20% - 40px); /* Calcul de la largeur pour assurer une largeur égale */
+            margin: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            font-size: 1.5em;
+            margin: 15px 0;
+            min-height: 3em; /* Hauteur minimale pour assurer l'uniformité */
+        }
+
+        .card p {
+            padding: 0 15px;
+            color: #666;
+        }
+
+        .card button {
+            display: inline-block;
+            margin: 15px 0;
+            padding: 10px 20px;
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .card button:hover {
+            background-color: #ff4500;
+        }
+
+        .card .salle-image {
+            width: 100%;
+            height: 150px; /* Vous pouvez ajuster la hauteur selon vos préférences */
+            overflow: hidden;
+        }
+
+        .card .salle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cette propriété assure que l'image remplisse l'espace tout en conservant son ratio d'aspect */
+        }
+
+        @media (max-width: 768px) {
+            .salle-details {
+                flex-direction: column;
+            }
+
+            .salle-image {
+                width: 100px;
+                height: 100px;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .salle-info {
+                margin-left: 0;
+            }
+
+            .card {
+                width: calc(50% - 40px); /* Ajustement pour les écrans plus petits */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1><span class="highlight">Sportify:</span> Consultation Sportive</h1>
+            <img src="logo.png" alt="Sportify Logo">
+        </header>
+        <nav class="navigation">
+            <button onclick="window.location.href='index.html'">Accueil</button>
+            <button onclick="window.location.href='tout-parcourir.html'">Tout Parcourir</button>
+            <button onclick="window.location.href='recherche.php'">Recherche</button>
+            <button>Rendez-vous</button>
+            <button onclick="window.location.href='compte.html'">Votre Compte</button>
+        </nav>
+        <section class="section">
+            <h2>Salle de sport Omnes</h2>
+            <div class="salle-details">
+                <div class="salle-image">
+                    <img src="salle-omnes.jpg" alt="Salle Omnes">
+                </div>
+                <div class="salle-info">
+                    <p>Numéro de la salle: 123</p>
+                    <p>Téléphone: 01 23 45 67 89</p>
+                    <p>Email: salle.omnes@sportify.com</p>
+                    <button onclick="showServices()">Nos services</button>
+                </div>
+            </div>
+            <div id="services" style="display: none;">
+                <h3>Nos services</h3>
+                <div class="card-container">
+                    <div class="card">
+                        <h3>Personnels de la salle </h3>
+                        <p>Rencontrez nos entraîneurs et personnels qualifiés.</p>
+                        <button onclick="window.location.href='personnels-salle.php'">En savoir plus</button>
+
+                    </div>
+                    <div class="card">
+                        <h3>Horaire de la gym</h3>
+                        <p>Consultez les différents  horaires d’ouverture de notre gym.</p>
+                        <button onclick="window.location.href='horaire_salle.html'">En savoir plus</button>
+                    </div>
+                    <div class="card">
+                        <h3>Règles sur les machines</h3>
+                        <p>Apprenez les règles et bonnes pratiques pour utiliser nos équipements.</p>
+                        <button onclick="window.location.href='regles-machines.html'">En savoir plus</button>
+                    </div>
+                    <div class="card">
+                        <h3>Nouveaux clients</h3>
+                        <p>Toutes les informations nécessaires pour nos nouveaux membres.</p>
+                        <button onclick="window.location.href='signup.html'">En savoir plus</button>
+
+                    </div>
+                    <div class="card">
+                        <h3>Alimentation et nutrition</h3>
+                        <p>Des conseils pour une alimentation  adaptée à vos besoins sportifs.</p>
+                        <button onclick="window.location.href='alimentation-nutrition.html'">En savoir plus</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <!-- Footer Content -->
+        </footer>
+    </div>
+
+    <script>
+        function showServices() {
+            var servicesDiv = document.getElementById("services");
+            if (servicesDiv.style.display === "none") {
+                servicesDiv.style.display = "block";
+            } else {
+                servicesDiv.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1
+-- Généré le : lun. 27 mai 2024 à 18:11
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données : `sportify`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `activitessportives`
+--
+
+CREATE TABLE `activitessportives` (
+  `activite_id` int(11) NOT NULL,
+  `nom` varchar(100) DEFAULT NULL,
+  `responsable_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `activitessportives`
+--
+
+INSERT INTO `activitessportives` (`activite_id`, `nom`, `responsable_id`) VALUES
+(6, 'Musculation', 2),
+(7, 'Fitness', 1),
+(8, 'Cardio-Training', 3),
+(12, 'Biking', 4),
+(13, 'Cours Collectifs', 5),
+(14, 'Basketball', 6),
+(15, 'Football', 7),
+(16, 'Rugby', 8),
+(17, 'Tennis', 9),
+(18, 'Natation', 10),
+(19, 'Plongeon', 11);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `coachs`
+--
+
+CREATE TABLE `coachs` (
+  `coach_id` int(11) NOT NULL,
+  `utilisateur_id` int(11) DEFAULT NULL,
+  `specialite` varchar(100) DEFAULT NULL,
+  `disponibilite` text DEFAULT NULL,
+  `bio` text DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `coachs`
+--
+
+INSERT INTO `coachs` (`coach_id`, `utilisateur_id`, `specialite`, `disponibilite`, `bio`, `photo`) VALUES
+(1, 2, 'Fitness', 'Lundi à Vendredi, 9h à 17h', 'Coach de fitness expérimenté.', 'coach1.jpg'),
+(2, 3, 'Musculation', 'Lundi à Vendredi, 8h à 18h', 'Coach de musculation professionnel avec plus de 10 ans d\'expérience.', 'coach2.jpg'),
+(3, 3, 'Cardio-Training', 'Lundi à Vendredi, 9h à 16h', 'Spécialiste du cardio-training certifié.', 'coach3.jpg'),
+(4, 4, 'Biking', 'Lundi à Vendredi, 10h à 16h', 'Coach de biking certifié.', 'coach4.jpg'),
+(5, 5, 'Cours Collectifs', 'Lundi à Vendredi, 8h à 17h', 'Coach de cours collectifs dynamique.', 'coach5.jpg'),
+(6, 6, 'Basketball', 'Lundi à Vendredi, 8h à 18h', 'Coach de basketball avec 15 ans d\'expérience.', 'coach6.jpg'),
+(7, 7, 'Football', 'Lundi à Vendredi, 9h à 17h', 'Coach de football professionnel.', 'coach7.jpg'),
+(8, 8, 'Rugby', 'Lundi à Vendredi, 10h à 16h', 'Coach de rugby expérimenté.', 'coach8.jpg'),
+(9, 9, 'Tennis', 'Lundi à Vendredi, 9h à 16h', 'Coach de tennis certifié.', 'coach9.jpg'),
+(10, 10, 'Natation', 'Lundi à Vendredi, 8h à 17h', 'Coach de natation expérimenté.', 'coach10.jpg'),
+(11, 11, 'Plongeon', 'Lundi à Vendredi, 8h à 17h', 'Coach de plongeon certifié.', 'coach11.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `installationssportives`
+--
+
+CREATE TABLE `installationssportives` (
+  `installation_id` int(11) NOT NULL,
+  `nom` varchar(100) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `regles` text DEFAULT NULL,
+  `disponibilite` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `installationssportives`
+--
+
+INSERT INTO `installationssportives` (`installation_id`, `nom`, `description`, `regles`, `disponibilite`) VALUES
+(1, 'Salle de sport A', 'Salle de sport entièrement équipée avec des machines modernes.', 'Interdiction de manger ou de boire.', 'Lundi à Dimanche, 6h à 22h'),
+(2, 'Piscine B', 'Piscine olympique.', 'Douche obligatoire avant d\'entrer dans la piscine.', 'Lundi à Dimanche, 6h à 20h');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `messages`
+--
+
+CREATE TABLE `messages` (
+  `message_id` int(11) NOT NULL,
+  `from_user_id` int(11) NOT NULL,
+  `to_user_id` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `timestamp` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `messages`
+--
+
+INSERT INTO `messages` (`message_id`, `from_user_id`, `to_user_id`, `message`, `timestamp`) VALUES
+(1, 14, 0, 'bonjour', '2024-05-27 11:47:54'),
+(2, 14, 0, 'nfife', '2024-05-27 11:47:58');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `rendezvous`
+--
+
+CREATE TABLE `rendezvous` (
+  `rendezvous_id` int(11) NOT NULL,
+  `utilisateur_id` int(11) DEFAULT NULL,
+  `coach_id` int(11) DEFAULT NULL,
+  `date_rendezvous` datetime DEFAULT NULL,
+  `statut` enum('confirmé','annulé') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `rendezvous`
+--
+
+INSERT INTO `rendezvous` (`rendezvous_id`, `utilisateur_id`, `coach_id`, `date_rendezvous`, `statut`) VALUES
+(1, 1, 1, '2024-06-01 10:00:00', 'confirmé'),
+(2, 1, 1, '2024-06-02 14:00:00', 'annulé');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `utilisateurs`
+--
+
+CREATE TABLE `utilisateurs` (
+  `utilisateur_id` int(11) NOT NULL,
+  `nom` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `mot_de_passe` varchar(255) DEFAULT NULL,
+  `type_utilisateur` enum('client','coach','admin') DEFAULT NULL,
+  `adresse` varchar(255) DEFAULT NULL,
+  `numero_telephone` varchar(20) DEFAULT NULL,
+  `carte_etudiant` varchar(50) DEFAULT NULL,
+  `online` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `utilisateurs`
+--
+
+INSERT INTO `utilisateurs` (`utilisateur_id`, `nom`, `email`, `mot_de_passe`, `type_utilisateur`, `adresse`, `numero_telephone`, `carte_etudiant`, `online`) VALUES
+(1, 'Alice Dupont', 'alice@example.com', 'motdepasse123', 'client', '123 Rue Elm', '123-456-7890', 'S1234567', 0),
+(2, 'Bob Martin', 'bob@example.com', 'motdepasse123', 'coach', '456 Avenue Chêne', '987-654-3210', 'S2345678', 0),
+(3, 'Charlie Lebrun', 'charlie@example.com', 'motdepasse123', 'admin', '789 Route Pin', '555-555-5555', 'S3456789', 0),
+(4, 'David Biking', 'david@example.com', 'motdepasse123', 'coach', '101 Rue du Velo', '123-111-1111', 'S4567890', 0),
+(5, 'Emma Collectifs', 'emma@example.com', 'motdepasse123', 'coach', '102 Rue de Fitness', '123-222-2222', 'S5678901', 0),
+(6, 'Frank Basketball', 'frank@example.com', 'motdepasse123', 'coach', '103 Rue de Basket', '123-333-3333', 'S6789012', 0),
+(7, 'Grace Football', 'grace@example.com', 'motdepasse123', 'coach', '104 Rue de Foot', '123-444-4444', 'S7890123', 0),
+(8, 'Henry Rugby', 'henry@example.com', 'motdepasse123', 'coach', '105 Rue de Rugby', '123-555-5555', 'S8901234', 0),
+(9, 'Ivy Tennis', 'ivy@example.com', 'motdepasse123', 'coach', '106 Rue de Tennis', '123-666-6666', 'S9012345', 0),
+(10, 'Jack Natation', 'jack@example.com', 'motdepasse123', 'coach', '107 Rue de Natation', '123-777-7777', 'S0123456', 0),
+(11, 'Karen Plongeon', 'karen@example.com', 'motdepasse123', 'coach', '108 Rue de Plongeon', '123-888-8888', 'S1234567', 0),
+(12, 'Lewis Orel', '123@gmail.com', '$2y$10$S35ze9Jg2Is91D9tjthCPevtYP959U/1Bip7bNcaSon1QaPAEiBEG', 'client', '20 rue sextius michel 75015', '0696111111', '111111111111111', 0),
+(13, 'aa', '1234@gmail.com', '$2y$10$dtM7i4AW54NwAqjDnHLV/.SgvuSr4TcxpQgXQmc82EI.TEjTk8xba', 'client', '20 rue sextius michel 75015', '148482828', '123', 0),
+(14, 'azerty', '12345@gmail.com', '$2y$10$ZF7WGt4DqKbMPy3zQ7xS1e6YZjwK/H4JFeV6dqGS/JUi0Oj7Gm7M2', 'client', '20 rue sextius michel 75015', '1234', '123', 0),
+(15, 'VTR', 'Jevie@gmail.com', '$2y$10$WMVQeg/L1s1gtbz89AJQHuxiktZfYZVrv4oEqUOcaOS.EsAODLiMC', 'coach', '20 rue sextius michel 75015', '0909090909', '12349485', 0);
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `activitessportives`
+--
+ALTER TABLE `activitessportives`
+  ADD PRIMARY KEY (`activite_id`),
+  ADD UNIQUE KEY `nom` (`nom`),
+  ADD KEY `responsable_id` (`responsable_id`);
+
+--
+-- Index pour la table `coachs`
+--
+ALTER TABLE `coachs`
+  ADD PRIMARY KEY (`coach_id`),
+  ADD KEY `utilisateur_id` (`utilisateur_id`);
+
+--
+-- Index pour la table `installationssportives`
+--
+ALTER TABLE `installationssportives`
+  ADD PRIMARY KEY (`installation_id`);
+
+--
+-- Index pour la table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`message_id`);
+
+--
+-- Index pour la table `rendezvous`
+--
+ALTER TABLE `rendezvous`
+  ADD PRIMARY KEY (`rendezvous_id`),
+  ADD KEY `utilisateur_id` (`utilisateur_id`),
+  ADD KEY `coach_id` (`coach_id`);
+
+--
+-- Index pour la table `utilisateurs`
+--
+ALTER TABLE `utilisateurs`
+  ADD PRIMARY KEY (`utilisateur_id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `activitessportives`
+--
+ALTER TABLE `activitessportives`
+  MODIFY `activite_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT pour la table `coachs`
+--
+ALTER TABLE `coachs`
+  MODIFY `coach_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT pour la table `installationssportives`
+--
+ALTER TABLE `installationssportives`
+  MODIFY `installation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `rendezvous`
+--
+ALTER TABLE `rendezvous`
+  MODIFY `rendezvous_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `utilisateurs`
+--
+ALTER TABLE `utilisateurs`
+  MODIFY `utilisateur_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `activitessportives`
+--
+ALTER TABLE `activitessportives`
+  ADD CONSTRAINT `activitessportives_ibfk_1` FOREIGN KEY (`responsable_id`) REFERENCES `coachs` (`coach_id`);
+
+--
+-- Contraintes pour la table `coachs`
+--
+ALTER TABLE `coachs`
+  ADD CONSTRAINT `coachs_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateurs` (`utilisateur_id`);
+
+--
+-- Contraintes pour la table `rendezvous`
+--
+ALTER TABLE `rendezvous`
+  ADD CONSTRAINT `rendezvous_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateurs` (`utilisateur_id`),
+  ADD CONSTRAINT `rendezvous_ibfk_2` FOREIGN KEY (`coach_id`) REFERENCES `coachs` (`coach_id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

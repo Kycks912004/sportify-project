@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports de compétition - Sportify</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .competition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.5em;
+            margin: 15px 0;
+            color: #007bff;
+        }
+
+        .card p {
+            padding: 0 15px;
+            color: #666;
+            font-size: 1em;
+        }
+
+        .card a {
+            display: inline-block;
+            margin: 15px 0;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .card a:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1><span class="highlight">Sportify:</span> Consultation Sportive</h1>
+            <img src="logo.png" alt="Sportify Logo">
+        </header>
+        <nav class="navigation">
+            <button onclick="location.href='index.html'">Accueil</button>
+            <button onclick="location.href='tout-parcourir.html'">Tout Parcourir</button>
+            <button onclick="location.href='recherche.html'">Recherche</button>
+            <button onclick="location.href='rendez-vous.html'">Rendez-vous</button>
+            <button onclick="location.href='votre-compte.html'">Votre Compte</button>
+        </nav>
+        <section class="section">
+            <h2>Les Sports de compétition</h2>
+            <div class="competition-grid">
+                <div class="card">
+                    <h3>Basketball</h3>
+					<img src="basket.jpg" alt="Basketball">
+                    <p>Description du basketball...</p>
+                    <a href="#" onclick="showCoachDetails('Basketball')">En savoir plus</a>
+                </div>
+                <div class="card">
+                    <h3>Football</h3>
+				    <img src="foot.jpg" alt="Football">
+                    <p>Description du football...</p>
+                    <a href="#" onclick="showCoachDetails('Football')">En savoir plus</a>
+                </div>
+                <div class="card">
+                    <h3>Rugby</h3>
+					<img src="rugby.jpg" alt="Rugby">
+                    <p>Description du rugby...</p>
+                    <a href="#" onclick="showCoachDetails('Rugby')">En savoir plus</a>
+                </div>
+                <div class="card">
+                    <h3>Tennis</h3>
+					<img src="tennis.jpg" alt="Tennis">
+                    <p>Description du tennis...</p>
+                    <a href="#" onclick="showCoachDetails('Tennis')">En savoir plus</a>
+                </div>
+                <div class="card">
+                    <h3>Natation</h3>
+					<img src="natation.jpg" alt="Natation">
+                    <p>Description de la natation...</p>
+                    <a href="#" onclick="showCoachDetails('Natation')">En savoir plus</a>
+                </div>
+                <div class="card">
+                    <h3>Plongeon</h3>
+				    <img src="plongeon.jpg" alt="Plongeon">
+                    <p>Description du plongeon...</p>
+                    <a href="#" onclick="showCoachDetails('Plongeon')">En savoir plus</a>
+                </div>
+            </div>
+            <div id="coach-details"></div>
+        </section>
+        <footer class="footer">
+            <!-- Footer Content -->
+        </footer>
+    </div>
+    <script>
+        // JavaScript function showCoachDetails() will be here
+    </script>
+</body>
+</html>

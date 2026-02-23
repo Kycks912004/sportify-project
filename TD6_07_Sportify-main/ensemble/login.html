@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportify: Connexion</title>
+    <link rel="stylesheet" href="stylesL.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1><span class="highlight">Sportify:</span> Connexion</h1>
+        </header>
+        <section class="section">
+            <div class="login-form">
+                <h2>Connexion</h2>
+                <form id="loginForm" action="login.php" method="POST">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="password">Mot de passe:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Se connecter</button>
+                </form>
+                <button onclick="window.location.href='signup.html'">S'inscrire</button>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="contact-info">
+                <h2>Contactez-nous</h2>
+                <p>Email: contact@sportify.com</p>
+                <p>Téléphone: 01 23 45 67 89</p>
+                <p>Adresse: 10 rue Sextius Michel, 75016 Paris</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

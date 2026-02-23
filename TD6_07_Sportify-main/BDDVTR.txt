@@ -1,0 +1,1025 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1
+-- Généré le : sam. 01 juin 2024 à 10:32
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données : `sportify`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `activitessportives`
+--
+
+CREATE TABLE `activitessportives` (
+  `activite_id` int(11) NOT NULL,
+  `nom` varchar(100) DEFAULT NULL,
+  `responsable_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `activitessportives`
+--
+
+INSERT INTO `activitessportives` (`activite_id`, `nom`, `responsable_id`) VALUES
+(6, 'Musculation', 2),
+(7, 'Fitness', 1),
+(8, 'Cardio-Training', 3),
+(12, 'Biking', 4),
+(13, 'Cours Collectifs', 5),
+(14, 'Basketball', 6),
+(15, 'Football', 7),
+(16, 'Rugby', 8),
+(17, 'Tennis', 9),
+(18, 'Natation', 10),
+(19, 'Plongeon', 11);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `coachs`
+--
+
+CREATE TABLE `coachs` (
+  `coach_id` int(11) NOT NULL,
+  `utilisateur_id` int(11) DEFAULT NULL,
+  `specialite` varchar(100) DEFAULT NULL,
+  `disponibilite` text DEFAULT NULL,
+  `bio` text DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  `xml_file` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `coachs`
+--
+
+INSERT INTO `coachs` (`coach_id`, `utilisateur_id`, `specialite`, `disponibilite`, `bio`, `photo`, `xml_file`) VALUES
+(1, 2, 'Fitness', 'Lundi à Vendredi, 9h à 17h', 'Coach de fitness expérimenté, passionné par l\'amélioration du bien-être physique et mental de ses clients. Spécialisé dans la création de programmes d\'entraînement personnalisés pour atteindre des objectifs spécifiques, que ce soit la perte de poids, le renforcement musculaire, ou l\'amélioration de la condition physique générale.', 'coach1.jpg', XML/CV1.xml),
+(2, 3, 'Musculation', 'Lundi à Vendredi, 8h à 18h', 'Coach de musculation professionnel avec plus de 10 ans d\'expérience, spécialisé dans le développement de programmes de renforcement musculaire sur mesure. Expert en techniques d\'entraînement avancées et en nutrition sportive, je m\'engage à aider mes clients à atteindre leurs objectifs de forme physique, qu\'il s\'agisse de gagner en masse musculaire, d\'améliorer leur force, ou de transformer leur silhouette.', 'coach2.jpg', XML/CV2.xml),
+(3, 3, 'Cardio-Training', 'Lundi à Vendredi, 9h à 16h', 'Spécialiste certifié en cardio-training, je suis dédié à l\'amélioration de l\'endurance et de la santé cardiovasculaire de mes clients. Avec une expertise approfondie et des années d\'expérience, je crée des programmes de cardio personnalisés pour optimiser la performance et favoriser le bien-être général.', 'coach3.jpg', XML/CV3.xml),
+(4, 4, 'Biking', 'Lundi à Vendredi, 10h à 16h', 'Coach de biking certifié, passionné par le cyclisme et l\'amélioration de la condition physique à travers des séances dynamiques et motivantes. Fort d\'une solide expérience, je conçois des programmes d\'entraînement sur mesure pour améliorer l\'endurance, la force et la performance de mes clients. Mon approche personnalisée et mon enthousiasme pour le biking garantissent des résultats optimaux et une progression constante.', 'coach4.jpg', XML/CV4.xml),
+(5, 5, 'Cours Collectifs', 'Lundi à Vendredi, 8h à 17h', 'Coach de cours collectifs dynamique, je suis animé par la passion d\'inspirer et de motiver mes participants à atteindre leurs objectifs de fitness. Avec une énergie contagieuse et une expertise approfondie, je crée des séances dynamiques et variées qui allient cardio, renforcement musculaire et flexibilité.', 'coach5.jpg', XML/CV5.xml),
+(6, 6, 'Basketball', 'Lundi à Vendredi, 8h à 18h', 'Coach de basketball chevronné, fort de 15 années d\'expérience dans le domaine. Passionné par ce sport, je m\'engage à développer les compétences techniques, tactiques et mentales de mes joueurs, qu\'ils soient débutants ou confirmés. Ma méthodologie inclut des séances d\'entraînement variées et ciblées, visant à maximiser le potentiel de chaque athlète et à favoriser la cohésion d\'équipe.', 'coach6.jpg', XML/CV6.xml),
+(7, 7, 'Football', 'Lundi à Vendredi, 9h à 17h', 'Coach de football professionnel, j\'apporte une expertise éprouvée et une passion inébranlable pour le jeu. Avec une carrière dans le football forgée par des années d\'expérience en tant que joueur et entraîneur, je suis dédié à l\'excellence sur et en dehors du terrain. Mon approche repose sur une combinaison de tactiques avancées, de développement des compétences individuelles et de renforcement de l\'esprit d\'équipe. Je m\'efforce non seulement d\'améliorer les performances athlétiques de mes joueurs, mais aussi de les guider vers une croissance personnelle et professionnelle durable.', 'coach7.jpg', XML/CV7.xml),
+(8, 8, 'Rugby', 'Lundi à Vendredi, 10h à 16h', 'Coach de rugby expérimenté, je possède une vaste expérience dans ce sport passionnant. Avec une carrière forgée sur le terrain et sur les lignes de touche, je suis dévoué à l\'excellence et à la progression de mes joueurs. Mon approche d\'entraînement allie la technicité, la tactique et la condition physique pour développer des équipes compétitives et des joueurs accomplis.', 'coach8.jpg', XML/CV8.xml),
+(9, 9, 'Tennis', 'Lundi à Vendredi, 9h à 16h', 'oach de tennis certifié, je suis passionné par ce sport depuis de nombreuses années. Avec une solide expérience et des qualifications reconnues, je m\'engage à aider mes élèves à atteindre leur plein potentiel sur le court. Mon approche d\'entraînement est axée sur le développement des compétences techniques, la stratégie de jeu, la condition physique et mentale, ainsi que sur la promotion d\'une passion durable pour le tennis.', 'coach9.jpg', XML/CV9.xml),
+(10, 10, 'Natation', 'Lundi à Vendredi, 8h à 17h', 'Coach de natation expérimenté, je suis passionné par l\'eau et la formation de nageurs depuis de nombreuses années. Avec une expertise approfondie et des certifications reconnues, je m\'engage à aider mes élèves à améliorer leurs compétences en natation, à renforcer leur technique et à développer leur confiance dans l\'eau. Mon approche d\'entraînement est adaptée à tous les niveaux, des débutants apprenant les bases de la natation aux nageurs compétitifs perfectionnant leur performance en compétition.', 'coach10.jpg', XML/CV10.xml),
+(11, 11, 'Plongeon', 'Lundi à Vendredi, 8h à 17h', 'Coach de plongeon certifié, je suis passionné par ce sport exaltant et la formation de plongeurs depuis de nombreuses années. Avec une expertise approfondie et des certifications reconnues, je m\'engage à aider mes élèves à maîtriser les compétences techniques du plongeon, à perfectionner leur forme et à développer leur confiance en eux. Mon approche d\'entraînement est personnalisée pour répondre aux besoins individuels de chaque plongeur, qu\'il s\'agisse de débutants apprenant les rudiments du plongeon ou de compétiteurs visant l\'excellence sur le circuit.', 'coach11.jpg', XML/CV11.xml),
+(12, 15, 'Yoga', 'Lundi à Vendredi, 9h à 18h', '\nEn tant que coach de yoga certifié avec 5 années d\'expérience, je suis passionné par l\'art de guider mes élèves vers le bien-être physique, mental et spirituel. J\'ai perfectionné mes compétences dans différentes disciplines de yoga et je m\'engage à offrir des séances enrichissantes qui allient la pratique des asanas, la respiration consciente et la méditation. Mon approche douce et bienveillante vise à créer un espace où mes élèves peuvent explorer et développer leur pratique de manière holistique, en trouvant l\'équilibre entre force et souplesse, calme et énergie.', 'coach12.jpg', 'XML/CV12.xml'),
+(13, 16, 'Pilates', 'Lundi à Vendredi, 8h à 17h', 'En tant que coach de Pilates expérimenté, j\'ai consacré des années à perfectionner ma pratique et à guider mes élèves vers une meilleure santé et vitalité. Avec une approche holistique, je m\'efforce d\'intégrer les principes du Pilates - contrôle, concentration, fluidité, précision et respiration - dans chaque séance. Mon objectif est de créer un environnement sûr et stimulant où mes élèves peuvent renforcer leur corps, améliorer leur posture et trouver un équilibre entre force et souplesse.', 'coach13.jpg', 'XML/CV13.xml');
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `creaneaux_horaires`
+--
+
+CREATE TABLE `creaneaux_horaires` (
+  `id` int(11) NOT NULL,
+  `coach_id` int(11) NOT NULL,
+  `date_rendezvous` datetime NOT NULL,
+  `statut` enum('disponible','indisponible') DEFAULT 'disponible'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `creaneaux_horaires`
+--
+
+INSERT INTO `creaneaux_horaires` (`id`, `coach_id`, `date_rendezvous`, `statut`) VALUES
+(1, 2, '0000-00-00 00:00:00', 'indisponible'),
+(2, 6, '0000-00-00 00:00:00', 'indisponible'),
+(3, 1, '1970-01-01 01:00:00', 'disponible'),
+(4, 1, '1970-01-01 01:00:00', 'disponible'),
+(5, 1, '1970-01-01 01:00:00', 'disponible'),
+(6, 1, '1970-01-01 01:00:00', 'disponible'),
+(7, 1, '1970-01-01 01:00:00', 'disponible'),
+(8, 1, '1970-01-01 01:00:00', 'disponible'),
+(9, 1, '1970-01-01 01:00:00', 'disponible'),
+(10, 1, '1970-01-01 01:00:00', 'disponible'),
+(11, 1, '1970-01-01 01:00:00', 'disponible'),
+(12, 1, '1970-01-01 01:00:00', 'disponible'),
+(13, 1, '1970-01-01 01:00:00', 'disponible'),
+(14, 1, '1970-01-01 01:00:00', 'disponible'),
+(15, 1, '1970-01-01 01:00:00', 'disponible'),
+(16, 1, '1970-01-01 01:00:00', 'disponible'),
+(17, 1, '1970-01-01 01:00:00', 'disponible'),
+(18, 1, '1970-01-01 01:00:00', 'disponible'),
+(19, 1, '1970-01-01 01:00:00', 'disponible'),
+(20, 1, '1970-01-01 01:00:00', 'disponible'),
+(21, 1, '1970-01-01 01:00:00', 'disponible'),
+(22, 1, '1970-01-01 01:00:00', 'disponible'),
+(23, 1, '1970-01-01 01:00:00', 'disponible'),
+(24, 1, '1970-01-01 01:00:00', 'disponible'),
+(25, 1, '1970-01-01 01:00:00', 'disponible'),
+(26, 1, '1970-01-01 01:00:00', 'disponible'),
+(27, 1, '1970-01-01 01:00:00', 'disponible'),
+(28, 1, '1970-01-01 01:00:00', 'disponible'),
+(29, 1, '1970-01-01 01:00:00', 'disponible'),
+(30, 1, '1970-01-01 01:00:00', 'disponible'),
+(31, 1, '1970-01-01 01:00:00', 'disponible'),
+(32, 1, '1970-01-01 01:00:00', 'disponible'),
+(33, 1, '1970-01-01 01:00:00', 'disponible'),
+(34, 1, '1970-01-01 01:00:00', 'disponible'),
+(35, 1, '1970-01-01 01:00:00', 'disponible'),
+(36, 1, '1970-01-01 01:00:00', 'disponible'),
+(37, 1, '1970-01-01 01:00:00', 'disponible'),
+(38, 1, '1970-01-01 01:00:00', 'disponible'),
+(39, 1, '1970-01-01 01:00:00', 'disponible'),
+(40, 1, '1970-01-01 01:00:00', 'disponible'),
+(41, 1, '1970-01-01 01:00:00', 'disponible'),
+(42, 1, '1970-01-01 01:00:00', 'disponible'),
+(43, 1, '1970-01-01 01:00:00', 'disponible'),
+(44, 1, '1970-01-01 01:00:00', 'disponible'),
+(45, 1, '1970-01-01 01:00:00', 'disponible'),
+(46, 1, '1970-01-01 01:00:00', 'disponible'),
+(47, 1, '1970-01-01 01:00:00', 'disponible'),
+(48, 1, '1970-01-01 01:00:00', 'disponible'),
+(49, 1, '1970-01-01 01:00:00', 'disponible'),
+(50, 1, '1970-01-01 01:00:00', 'disponible'),
+(51, 1, '1970-01-01 01:00:00', 'disponible'),
+(52, 1, '1970-01-01 01:00:00', 'disponible'),
+(53, 1, '1970-01-01 01:00:00', 'disponible'),
+(54, 1, '1970-01-01 01:00:00', 'disponible'),
+(55, 1, '1970-01-01 01:00:00', 'disponible'),
+(56, 1, '1970-01-01 01:00:00', 'disponible'),
+(57, 1, '1970-01-01 01:00:00', 'disponible'),
+(58, 1, '1970-01-01 01:00:00', 'disponible'),
+(59, 2, '1970-01-01 01:00:00', 'indisponible'),
+(60, 2, '1970-01-01 01:00:00', 'indisponible'),
+(61, 2, '1970-01-01 01:00:00', 'indisponible'),
+(62, 2, '1970-01-01 01:00:00', 'indisponible'),
+(63, 2, '1970-01-01 01:00:00', 'indisponible'),
+(64, 2, '1970-01-01 01:00:00', 'indisponible'),
+(65, 2, '1970-01-01 01:00:00', 'indisponible'),
+(66, 2, '1970-01-01 01:00:00', 'indisponible'),
+(67, 2, '1970-01-01 01:00:00', 'indisponible'),
+(68, 2, '1970-01-01 01:00:00', 'indisponible'),
+(69, 2, '1970-01-01 01:00:00', 'indisponible'),
+(70, 2, '1970-01-01 01:00:00', 'indisponible'),
+(71, 2, '1970-01-01 01:00:00', 'indisponible'),
+(72, 2, '1970-01-01 01:00:00', 'indisponible'),
+(73, 2, '1970-01-01 01:00:00', 'indisponible'),
+(74, 2, '1970-01-01 01:00:00', 'indisponible'),
+(75, 2, '1970-01-01 01:00:00', 'indisponible'),
+(76, 2, '1970-01-01 01:00:00', 'indisponible'),
+(77, 2, '1970-01-01 01:00:00', 'indisponible'),
+(78, 2, '1970-01-01 01:00:00', 'indisponible'),
+(79, 2, '1970-01-01 01:00:00', 'indisponible'),
+(80, 2, '1970-01-01 01:00:00', 'indisponible'),
+(81, 2, '1970-01-01 01:00:00', 'indisponible'),
+(82, 2, '1970-01-01 01:00:00', 'indisponible'),
+(83, 2, '1970-01-01 01:00:00', 'indisponible'),
+(84, 2, '1970-01-01 01:00:00', 'indisponible'),
+(85, 2, '1970-01-01 01:00:00', 'indisponible'),
+(86, 2, '1970-01-01 01:00:00', 'indisponible'),
+(87, 2, '1970-01-01 01:00:00', 'indisponible'),
+(88, 2, '1970-01-01 01:00:00', 'indisponible'),
+(89, 2, '1970-01-01 01:00:00', 'indisponible'),
+(90, 2, '1970-01-01 01:00:00', 'indisponible'),
+(91, 2, '1970-01-01 01:00:00', 'indisponible'),
+(92, 2, '1970-01-01 01:00:00', 'indisponible'),
+(93, 2, '1970-01-01 01:00:00', 'indisponible'),
+(94, 2, '1970-01-01 01:00:00', 'indisponible'),
+(95, 2, '1970-01-01 01:00:00', 'indisponible'),
+(96, 2, '1970-01-01 01:00:00', 'indisponible'),
+(97, 2, '1970-01-01 01:00:00', 'indisponible'),
+(98, 2, '1970-01-01 01:00:00', 'indisponible'),
+(99, 2, '1970-01-01 01:00:00', 'indisponible'),
+(100, 2, '1970-01-01 01:00:00', 'indisponible'),
+(101, 2, '1970-01-01 01:00:00', 'indisponible'),
+(102, 2, '1970-01-01 01:00:00', 'indisponible'),
+(103, 2, '1970-01-01 01:00:00', 'indisponible'),
+(104, 2, '1970-01-01 01:00:00', 'indisponible'),
+(105, 2, '1970-01-01 01:00:00', 'indisponible'),
+(106, 2, '1970-01-01 01:00:00', 'indisponible'),
+(107, 2, '1970-01-01 01:00:00', 'indisponible'),
+(108, 2, '1970-01-01 01:00:00', 'indisponible'),
+(109, 2, '1970-01-01 01:00:00', 'indisponible'),
+(110, 2, '1970-01-01 01:00:00', 'indisponible'),
+(111, 2, '1970-01-01 01:00:00', 'indisponible'),
+(112, 2, '1970-01-01 01:00:00', 'indisponible'),
+(113, 2, '1970-01-01 01:00:00', 'indisponible'),
+(114, 2, '1970-01-01 01:00:00', 'indisponible'),
+(115, 3, '1970-01-01 01:00:00', 'disponible'),
+(116, 3, '1970-01-01 01:00:00', 'disponible'),
+(117, 3, '1970-01-01 01:00:00', 'disponible'),
+(118, 3, '1970-01-01 01:00:00', 'disponible'),
+(119, 3, '1970-01-01 01:00:00', 'disponible'),
+(120, 3, '1970-01-01 01:00:00', 'disponible'),
+(121, 3, '1970-01-01 01:00:00', 'disponible'),
+(122, 3, '1970-01-01 01:00:00', 'disponible'),
+(123, 3, '1970-01-01 01:00:00', 'disponible'),
+(124, 3, '1970-01-01 01:00:00', 'disponible'),
+(125, 3, '1970-01-01 01:00:00', 'disponible'),
+(126, 3, '1970-01-01 01:00:00', 'disponible'),
+(127, 3, '1970-01-01 01:00:00', 'disponible'),
+(128, 3, '1970-01-01 01:00:00', 'disponible'),
+(129, 3, '1970-01-01 01:00:00', 'disponible'),
+(130, 3, '1970-01-01 01:00:00', 'disponible'),
+(131, 3, '1970-01-01 01:00:00', 'disponible'),
+(132, 3, '1970-01-01 01:00:00', 'disponible'),
+(133, 3, '1970-01-01 01:00:00', 'disponible'),
+(134, 3, '1970-01-01 01:00:00', 'disponible'),
+(135, 3, '1970-01-01 01:00:00', 'disponible'),
+(136, 3, '1970-01-01 01:00:00', 'disponible'),
+(137, 3, '1970-01-01 01:00:00', 'disponible'),
+(138, 3, '1970-01-01 01:00:00', 'disponible'),
+(139, 3, '1970-01-01 01:00:00', 'disponible'),
+(140, 3, '1970-01-01 01:00:00', 'disponible'),
+(141, 3, '1970-01-01 01:00:00', 'disponible'),
+(142, 3, '1970-01-01 01:00:00', 'disponible'),
+(143, 3, '1970-01-01 01:00:00', 'disponible'),
+(144, 3, '1970-01-01 01:00:00', 'disponible'),
+(145, 3, '1970-01-01 01:00:00', 'disponible'),
+(146, 3, '1970-01-01 01:00:00', 'disponible'),
+(147, 3, '1970-01-01 01:00:00', 'disponible'),
+(148, 3, '1970-01-01 01:00:00', 'disponible'),
+(149, 3, '1970-01-01 01:00:00', 'disponible'),
+(150, 3, '1970-01-01 01:00:00', 'disponible'),
+(151, 3, '1970-01-01 01:00:00', 'disponible'),
+(152, 3, '1970-01-01 01:00:00', 'disponible'),
+(153, 3, '1970-01-01 01:00:00', 'disponible'),
+(154, 3, '1970-01-01 01:00:00', 'disponible'),
+(155, 3, '1970-01-01 01:00:00', 'disponible'),
+(156, 3, '1970-01-01 01:00:00', 'disponible'),
+(157, 3, '1970-01-01 01:00:00', 'disponible'),
+(158, 3, '1970-01-01 01:00:00', 'disponible'),
+(159, 3, '1970-01-01 01:00:00', 'disponible'),
+(160, 3, '1970-01-01 01:00:00', 'disponible'),
+(161, 3, '1970-01-01 01:00:00', 'disponible'),
+(162, 3, '1970-01-01 01:00:00', 'disponible'),
+(163, 3, '1970-01-01 01:00:00', 'disponible'),
+(164, 3, '1970-01-01 01:00:00', 'disponible'),
+(165, 3, '1970-01-01 01:00:00', 'disponible'),
+(166, 3, '1970-01-01 01:00:00', 'disponible'),
+(167, 3, '1970-01-01 01:00:00', 'disponible'),
+(168, 3, '1970-01-01 01:00:00', 'disponible'),
+(169, 3, '1970-01-01 01:00:00', 'disponible'),
+(170, 3, '1970-01-01 01:00:00', 'disponible'),
+(171, 4, '1970-01-01 01:00:00', 'disponible'),
+(172, 4, '1970-01-01 01:00:00', 'disponible'),
+(173, 4, '1970-01-01 01:00:00', 'disponible'),
+(174, 4, '1970-01-01 01:00:00', 'disponible'),
+(175, 4, '1970-01-01 01:00:00', 'disponible'),
+(176, 4, '1970-01-01 01:00:00', 'disponible'),
+(177, 4, '1970-01-01 01:00:00', 'disponible'),
+(178, 4, '1970-01-01 01:00:00', 'disponible'),
+(179, 4, '1970-01-01 01:00:00', 'disponible'),
+(180, 4, '1970-01-01 01:00:00', 'disponible'),
+(181, 4, '1970-01-01 01:00:00', 'disponible'),
+(182, 4, '1970-01-01 01:00:00', 'disponible'),
+(183, 4, '1970-01-01 01:00:00', 'disponible'),
+(184, 4, '1970-01-01 01:00:00', 'disponible'),
+(185, 4, '1970-01-01 01:00:00', 'disponible'),
+(186, 4, '1970-01-01 01:00:00', 'disponible'),
+(187, 4, '1970-01-01 01:00:00', 'disponible'),
+(188, 4, '1970-01-01 01:00:00', 'disponible'),
+(189, 4, '1970-01-01 01:00:00', 'disponible'),
+(190, 4, '1970-01-01 01:00:00', 'disponible'),
+(191, 4, '1970-01-01 01:00:00', 'disponible'),
+(192, 4, '1970-01-01 01:00:00', 'disponible'),
+(193, 4, '1970-01-01 01:00:00', 'disponible'),
+(194, 4, '1970-01-01 01:00:00', 'disponible'),
+(195, 4, '1970-01-01 01:00:00', 'disponible'),
+(196, 4, '1970-01-01 01:00:00', 'disponible'),
+(197, 4, '1970-01-01 01:00:00', 'disponible'),
+(198, 4, '1970-01-01 01:00:00', 'disponible'),
+(199, 4, '1970-01-01 01:00:00', 'disponible'),
+(200, 4, '1970-01-01 01:00:00', 'disponible'),
+(201, 4, '1970-01-01 01:00:00', 'disponible'),
+(202, 4, '1970-01-01 01:00:00', 'disponible'),
+(203, 4, '1970-01-01 01:00:00', 'disponible'),
+(204, 4, '1970-01-01 01:00:00', 'disponible'),
+(205, 4, '1970-01-01 01:00:00', 'disponible'),
+(206, 4, '1970-01-01 01:00:00', 'disponible'),
+(207, 4, '1970-01-01 01:00:00', 'disponible'),
+(208, 4, '1970-01-01 01:00:00', 'disponible'),
+(209, 4, '1970-01-01 01:00:00', 'disponible'),
+(210, 4, '1970-01-01 01:00:00', 'disponible'),
+(211, 4, '1970-01-01 01:00:00', 'disponible'),
+(212, 4, '1970-01-01 01:00:00', 'disponible'),
+(213, 4, '1970-01-01 01:00:00', 'disponible'),
+(214, 4, '1970-01-01 01:00:00', 'disponible'),
+(215, 4, '1970-01-01 01:00:00', 'disponible'),
+(216, 4, '1970-01-01 01:00:00', 'disponible'),
+(217, 4, '1970-01-01 01:00:00', 'disponible'),
+(218, 4, '1970-01-01 01:00:00', 'disponible'),
+(219, 4, '1970-01-01 01:00:00', 'disponible'),
+(220, 4, '1970-01-01 01:00:00', 'disponible'),
+(221, 4, '1970-01-01 01:00:00', 'disponible'),
+(222, 4, '1970-01-01 01:00:00', 'disponible'),
+(223, 4, '1970-01-01 01:00:00', 'disponible'),
+(224, 4, '1970-01-01 01:00:00', 'disponible'),
+(225, 4, '1970-01-01 01:00:00', 'disponible'),
+(226, 4, '1970-01-01 01:00:00', 'disponible'),
+(227, 5, '1970-01-01 01:00:00', 'disponible'),
+(228, 5, '1970-01-01 01:00:00', 'disponible'),
+(229, 5, '1970-01-01 01:00:00', 'disponible'),
+(230, 5, '1970-01-01 01:00:00', 'disponible'),
+(231, 5, '1970-01-01 01:00:00', 'disponible'),
+(232, 5, '1970-01-01 01:00:00', 'disponible'),
+(233, 5, '1970-01-01 01:00:00', 'disponible'),
+(234, 5, '1970-01-01 01:00:00', 'disponible'),
+(235, 5, '1970-01-01 01:00:00', 'disponible'),
+(236, 5, '1970-01-01 01:00:00', 'disponible'),
+(237, 5, '1970-01-01 01:00:00', 'disponible'),
+(238, 5, '1970-01-01 01:00:00', 'disponible'),
+(239, 5, '1970-01-01 01:00:00', 'disponible'),
+(240, 5, '1970-01-01 01:00:00', 'disponible'),
+(241, 5, '1970-01-01 01:00:00', 'disponible'),
+(242, 5, '1970-01-01 01:00:00', 'disponible'),
+(243, 5, '1970-01-01 01:00:00', 'disponible'),
+(244, 5, '1970-01-01 01:00:00', 'disponible'),
+(245, 5, '1970-01-01 01:00:00', 'disponible'),
+(246, 5, '1970-01-01 01:00:00', 'disponible'),
+(247, 5, '1970-01-01 01:00:00', 'disponible'),
+(248, 5, '1970-01-01 01:00:00', 'disponible'),
+(249, 5, '1970-01-01 01:00:00', 'disponible'),
+(250, 5, '1970-01-01 01:00:00', 'disponible'),
+(251, 5, '1970-01-01 01:00:00', 'disponible'),
+(252, 5, '1970-01-01 01:00:00', 'disponible'),
+(253, 5, '1970-01-01 01:00:00', 'disponible'),
+(254, 5, '1970-01-01 01:00:00', 'disponible'),
+(255, 5, '1970-01-01 01:00:00', 'disponible'),
+(256, 5, '1970-01-01 01:00:00', 'disponible'),
+(257, 5, '1970-01-01 01:00:00', 'disponible'),
+(258, 5, '1970-01-01 01:00:00', 'disponible'),
+(259, 5, '1970-01-01 01:00:00', 'disponible'),
+(260, 5, '1970-01-01 01:00:00', 'disponible'),
+(261, 5, '1970-01-01 01:00:00', 'disponible'),
+(262, 5, '1970-01-01 01:00:00', 'disponible'),
+(263, 5, '1970-01-01 01:00:00', 'disponible'),
+(264, 5, '1970-01-01 01:00:00', 'disponible'),
+(265, 5, '1970-01-01 01:00:00', 'disponible'),
+(266, 5, '1970-01-01 01:00:00', 'disponible'),
+(267, 5, '1970-01-01 01:00:00', 'disponible'),
+(268, 5, '1970-01-01 01:00:00', 'disponible'),
+(269, 5, '1970-01-01 01:00:00', 'disponible'),
+(270, 5, '1970-01-01 01:00:00', 'disponible'),
+(271, 5, '1970-01-01 01:00:00', 'disponible'),
+(272, 5, '1970-01-01 01:00:00', 'disponible'),
+(273, 5, '1970-01-01 01:00:00', 'disponible'),
+(274, 5, '1970-01-01 01:00:00', 'disponible'),
+(275, 5, '1970-01-01 01:00:00', 'disponible'),
+(276, 5, '1970-01-01 01:00:00', 'disponible'),
+(277, 5, '1970-01-01 01:00:00', 'disponible'),
+(278, 5, '1970-01-01 01:00:00', 'disponible'),
+(279, 5, '1970-01-01 01:00:00', 'disponible'),
+(280, 5, '1970-01-01 01:00:00', 'disponible'),
+(281, 5, '1970-01-01 01:00:00', 'disponible'),
+(282, 5, '1970-01-01 01:00:00', 'disponible'),
+(283, 6, '1970-01-01 01:00:00', 'disponible'),
+(284, 6, '1970-01-01 01:00:00', 'disponible'),
+(285, 6, '1970-01-01 01:00:00', 'disponible'),
+(286, 6, '1970-01-01 01:00:00', 'disponible'),
+(287, 6, '1970-01-01 01:00:00', 'disponible'),
+(288, 6, '1970-01-01 01:00:00', 'disponible'),
+(289, 6, '1970-01-01 01:00:00', 'disponible'),
+(290, 6, '1970-01-01 01:00:00', 'disponible'),
+(291, 6, '1970-01-01 01:00:00', 'disponible'),
+(292, 6, '1970-01-01 01:00:00', 'disponible'),
+(293, 6, '1970-01-01 01:00:00', 'disponible'),
+(294, 6, '1970-01-01 01:00:00', 'disponible'),
+(295, 6, '1970-01-01 01:00:00', 'disponible'),
+(296, 6, '1970-01-01 01:00:00', 'disponible'),
+(297, 6, '1970-01-01 01:00:00', 'disponible'),
+(298, 6, '1970-01-01 01:00:00', 'disponible'),
+(299, 6, '1970-01-01 01:00:00', 'disponible'),
+(300, 6, '1970-01-01 01:00:00', 'disponible'),
+(301, 6, '1970-01-01 01:00:00', 'disponible'),
+(302, 6, '1970-01-01 01:00:00', 'disponible'),
+(303, 6, '1970-01-01 01:00:00', 'disponible'),
+(304, 6, '1970-01-01 01:00:00', 'disponible'),
+(305, 6, '1970-01-01 01:00:00', 'disponible'),
+(306, 6, '1970-01-01 01:00:00', 'disponible'),
+(307, 6, '1970-01-01 01:00:00', 'disponible'),
+(308, 6, '1970-01-01 01:00:00', 'disponible'),
+(309, 6, '1970-01-01 01:00:00', 'disponible'),
+(310, 6, '1970-01-01 01:00:00', 'disponible'),
+(311, 6, '1970-01-01 01:00:00', 'disponible'),
+(312, 6, '1970-01-01 01:00:00', 'disponible'),
+(313, 6, '1970-01-01 01:00:00', 'disponible'),
+(314, 6, '1970-01-01 01:00:00', 'disponible'),
+(315, 6, '1970-01-01 01:00:00', 'disponible'),
+(316, 6, '1970-01-01 01:00:00', 'disponible'),
+(317, 6, '1970-01-01 01:00:00', 'disponible'),
+(318, 6, '1970-01-01 01:00:00', 'disponible'),
+(319, 6, '1970-01-01 01:00:00', 'disponible'),
+(320, 6, '1970-01-01 01:00:00', 'disponible'),
+(321, 6, '1970-01-01 01:00:00', 'disponible'),
+(322, 6, '1970-01-01 01:00:00', 'disponible'),
+(323, 6, '1970-01-01 01:00:00', 'disponible'),
+(324, 6, '1970-01-01 01:00:00', 'disponible'),
+(325, 6, '1970-01-01 01:00:00', 'disponible'),
+(326, 6, '1970-01-01 01:00:00', 'disponible'),
+(327, 6, '1970-01-01 01:00:00', 'disponible'),
+(328, 6, '1970-01-01 01:00:00', 'disponible'),
+(329, 6, '1970-01-01 01:00:00', 'disponible'),
+(330, 6, '1970-01-01 01:00:00', 'disponible'),
+(331, 6, '1970-01-01 01:00:00', 'disponible'),
+(332, 6, '1970-01-01 01:00:00', 'disponible'),
+(333, 6, '1970-01-01 01:00:00', 'disponible'),
+(334, 6, '1970-01-01 01:00:00', 'disponible'),
+(335, 6, '1970-01-01 01:00:00', 'disponible'),
+(336, 6, '1970-01-01 01:00:00', 'disponible'),
+(337, 6, '1970-01-01 01:00:00', 'disponible'),
+(338, 6, '1970-01-01 01:00:00', 'disponible'),
+(339, 7, '1970-01-01 01:00:00', 'disponible'),
+(340, 7, '1970-01-01 01:00:00', 'disponible'),
+(341, 7, '1970-01-01 01:00:00', 'disponible'),
+(342, 7, '1970-01-01 01:00:00', 'disponible'),
+(343, 7, '1970-01-01 01:00:00', 'disponible'),
+(344, 7, '1970-01-01 01:00:00', 'disponible'),
+(345, 7, '1970-01-01 01:00:00', 'disponible'),
+(346, 7, '1970-01-01 01:00:00', 'disponible'),
+(347, 7, '1970-01-01 01:00:00', 'disponible'),
+(348, 7, '1970-01-01 01:00:00', 'disponible'),
+(349, 7, '1970-01-01 01:00:00', 'disponible'),
+(350, 7, '1970-01-01 01:00:00', 'disponible'),
+(351, 7, '1970-01-01 01:00:00', 'disponible'),
+(352, 7, '1970-01-01 01:00:00', 'disponible'),
+(353, 7, '1970-01-01 01:00:00', 'disponible'),
+(354, 7, '1970-01-01 01:00:00', 'disponible'),
+(355, 7, '1970-01-01 01:00:00', 'disponible'),
+(356, 7, '1970-01-01 01:00:00', 'disponible'),
+(357, 7, '1970-01-01 01:00:00', 'disponible'),
+(358, 7, '1970-01-01 01:00:00', 'disponible'),
+(359, 7, '1970-01-01 01:00:00', 'disponible'),
+(360, 7, '1970-01-01 01:00:00', 'disponible'),
+(361, 7, '1970-01-01 01:00:00', 'disponible'),
+(362, 7, '1970-01-01 01:00:00', 'disponible'),
+(363, 7, '1970-01-01 01:00:00', 'disponible'),
+(364, 7, '1970-01-01 01:00:00', 'disponible'),
+(365, 7, '1970-01-01 01:00:00', 'disponible'),
+(366, 7, '1970-01-01 01:00:00', 'disponible'),
+(367, 7, '1970-01-01 01:00:00', 'disponible'),
+(368, 7, '1970-01-01 01:00:00', 'disponible'),
+(369, 7, '1970-01-01 01:00:00', 'disponible'),
+(370, 7, '1970-01-01 01:00:00', 'disponible'),
+(371, 7, '1970-01-01 01:00:00', 'disponible'),
+(372, 7, '1970-01-01 01:00:00', 'disponible'),
+(373, 7, '1970-01-01 01:00:00', 'disponible'),
+(374, 7, '1970-01-01 01:00:00', 'disponible'),
+(375, 7, '1970-01-01 01:00:00', 'disponible'),
+(376, 7, '1970-01-01 01:00:00', 'disponible'),
+(377, 7, '1970-01-01 01:00:00', 'disponible'),
+(378, 7, '1970-01-01 01:00:00', 'disponible'),
+(379, 7, '1970-01-01 01:00:00', 'disponible'),
+(380, 7, '1970-01-01 01:00:00', 'disponible'),
+(381, 7, '1970-01-01 01:00:00', 'disponible'),
+(382, 7, '1970-01-01 01:00:00', 'disponible'),
+(383, 7, '1970-01-01 01:00:00', 'disponible'),
+(384, 7, '1970-01-01 01:00:00', 'disponible'),
+(385, 7, '1970-01-01 01:00:00', 'disponible'),
+(386, 7, '1970-01-01 01:00:00', 'disponible'),
+(387, 7, '1970-01-01 01:00:00', 'disponible'),
+(388, 7, '1970-01-01 01:00:00', 'disponible'),
+(389, 7, '1970-01-01 01:00:00', 'disponible'),
+(390, 7, '1970-01-01 01:00:00', 'disponible'),
+(391, 7, '1970-01-01 01:00:00', 'disponible'),
+(392, 7, '1970-01-01 01:00:00', 'disponible'),
+(393, 7, '1970-01-01 01:00:00', 'disponible'),
+(394, 7, '1970-01-01 01:00:00', 'disponible'),
+(395, 8, '1970-01-01 01:00:00', 'disponible'),
+(396, 8, '1970-01-01 01:00:00', 'disponible'),
+(397, 8, '1970-01-01 01:00:00', 'disponible'),
+(398, 8, '1970-01-01 01:00:00', 'disponible'),
+(399, 8, '1970-01-01 01:00:00', 'disponible'),
+(400, 8, '1970-01-01 01:00:00', 'disponible'),
+(401, 8, '1970-01-01 01:00:00', 'disponible'),
+(402, 8, '1970-01-01 01:00:00', 'disponible'),
+(403, 8, '1970-01-01 01:00:00', 'disponible'),
+(404, 8, '1970-01-01 01:00:00', 'disponible'),
+(405, 8, '1970-01-01 01:00:00', 'disponible'),
+(406, 8, '1970-01-01 01:00:00', 'disponible'),
+(407, 8, '1970-01-01 01:00:00', 'disponible'),
+(408, 8, '1970-01-01 01:00:00', 'disponible'),
+(409, 8, '1970-01-01 01:00:00', 'disponible'),
+(410, 8, '1970-01-01 01:00:00', 'disponible'),
+(411, 8, '1970-01-01 01:00:00', 'disponible'),
+(412, 8, '1970-01-01 01:00:00', 'disponible'),
+(413, 8, '1970-01-01 01:00:00', 'disponible'),
+(414, 8, '1970-01-01 01:00:00', 'disponible'),
+(415, 8, '1970-01-01 01:00:00', 'disponible'),
+(416, 8, '1970-01-01 01:00:00', 'disponible'),
+(417, 8, '1970-01-01 01:00:00', 'disponible'),
+(418, 8, '1970-01-01 01:00:00', 'disponible'),
+(419, 8, '1970-01-01 01:00:00', 'disponible'),
+(420, 8, '1970-01-01 01:00:00', 'disponible'),
+(421, 8, '1970-01-01 01:00:00', 'disponible'),
+(422, 8, '1970-01-01 01:00:00', 'disponible'),
+(423, 8, '1970-01-01 01:00:00', 'disponible'),
+(424, 8, '1970-01-01 01:00:00', 'disponible'),
+(425, 8, '1970-01-01 01:00:00', 'disponible'),
+(426, 8, '1970-01-01 01:00:00', 'disponible'),
+(427, 8, '1970-01-01 01:00:00', 'disponible'),
+(428, 8, '1970-01-01 01:00:00', 'disponible'),
+(429, 8, '1970-01-01 01:00:00', 'disponible'),
+(430, 8, '1970-01-01 01:00:00', 'disponible'),
+(431, 8, '1970-01-01 01:00:00', 'disponible'),
+(432, 8, '1970-01-01 01:00:00', 'disponible'),
+(433, 8, '1970-01-01 01:00:00', 'disponible'),
+(434, 8, '1970-01-01 01:00:00', 'disponible'),
+(435, 8, '1970-01-01 01:00:00', 'disponible'),
+(436, 8, '1970-01-01 01:00:00', 'disponible'),
+(437, 8, '1970-01-01 01:00:00', 'disponible'),
+(438, 8, '1970-01-01 01:00:00', 'disponible'),
+(439, 8, '1970-01-01 01:00:00', 'disponible'),
+(440, 8, '1970-01-01 01:00:00', 'disponible'),
+(441, 8, '1970-01-01 01:00:00', 'disponible'),
+(442, 8, '1970-01-01 01:00:00', 'disponible'),
+(443, 8, '1970-01-01 01:00:00', 'disponible'),
+(444, 8, '1970-01-01 01:00:00', 'disponible'),
+(445, 8, '1970-01-01 01:00:00', 'disponible'),
+(446, 8, '1970-01-01 01:00:00', 'disponible'),
+(447, 8, '1970-01-01 01:00:00', 'disponible'),
+(448, 8, '1970-01-01 01:00:00', 'disponible'),
+(449, 8, '1970-01-01 01:00:00', 'disponible'),
+(450, 8, '1970-01-01 01:00:00', 'disponible'),
+(451, 9, '1970-01-01 01:00:00', 'indisponible'),
+(452, 9, '1970-01-01 01:00:00', 'indisponible'),
+(453, 9, '1970-01-01 01:00:00', 'indisponible'),
+(454, 9, '1970-01-01 01:00:00', 'indisponible'),
+(455, 9, '1970-01-01 01:00:00', 'indisponible'),
+(456, 9, '1970-01-01 01:00:00', 'indisponible'),
+(457, 9, '1970-01-01 01:00:00', 'indisponible'),
+(458, 9, '1970-01-01 01:00:00', 'indisponible'),
+(459, 9, '1970-01-01 01:00:00', 'indisponible'),
+(460, 9, '1970-01-01 01:00:00', 'indisponible'),
+(461, 9, '1970-01-01 01:00:00', 'indisponible'),
+(462, 9, '1970-01-01 01:00:00', 'indisponible'),
+(463, 9, '1970-01-01 01:00:00', 'indisponible'),
+(464, 9, '1970-01-01 01:00:00', 'indisponible'),
+(465, 9, '1970-01-01 01:00:00', 'indisponible'),
+(466, 9, '1970-01-01 01:00:00', 'indisponible'),
+(467, 9, '1970-01-01 01:00:00', 'indisponible'),
+(468, 9, '1970-01-01 01:00:00', 'indisponible'),
+(469, 9, '1970-01-01 01:00:00', 'indisponible'),
+(470, 9, '1970-01-01 01:00:00', 'indisponible'),
+(471, 9, '1970-01-01 01:00:00', 'indisponible'),
+(472, 9, '1970-01-01 01:00:00', 'indisponible'),
+(473, 9, '1970-01-01 01:00:00', 'indisponible'),
+(474, 9, '1970-01-01 01:00:00', 'indisponible'),
+(475, 9, '1970-01-01 01:00:00', 'indisponible'),
+(476, 9, '1970-01-01 01:00:00', 'indisponible'),
+(477, 9, '1970-01-01 01:00:00', 'indisponible'),
+(478, 9, '1970-01-01 01:00:00', 'indisponible'),
+(479, 9, '1970-01-01 01:00:00', 'indisponible'),
+(480, 9, '1970-01-01 01:00:00', 'indisponible'),
+(481, 9, '1970-01-01 01:00:00', 'indisponible'),
+(482, 9, '1970-01-01 01:00:00', 'indisponible'),
+(483, 9, '1970-01-01 01:00:00', 'indisponible'),
+(484, 9, '1970-01-01 01:00:00', 'indisponible'),
+(485, 9, '1970-01-01 01:00:00', 'indisponible'),
+(486, 9, '1970-01-01 01:00:00', 'indisponible'),
+(487, 9, '1970-01-01 01:00:00', 'indisponible'),
+(488, 9, '1970-01-01 01:00:00', 'indisponible'),
+(489, 9, '1970-01-01 01:00:00', 'indisponible'),
+(490, 9, '1970-01-01 01:00:00', 'indisponible'),
+(491, 9, '1970-01-01 01:00:00', 'indisponible'),
+(492, 9, '1970-01-01 01:00:00', 'indisponible'),
+(493, 9, '1970-01-01 01:00:00', 'indisponible'),
+(494, 9, '1970-01-01 01:00:00', 'indisponible'),
+(495, 9, '1970-01-01 01:00:00', 'indisponible'),
+(496, 9, '1970-01-01 01:00:00', 'indisponible'),
+(497, 9, '1970-01-01 01:00:00', 'indisponible'),
+(498, 9, '1970-01-01 01:00:00', 'indisponible'),
+(499, 9, '1970-01-01 01:00:00', 'indisponible'),
+(500, 9, '1970-01-01 01:00:00', 'indisponible'),
+(501, 9, '1970-01-01 01:00:00', 'indisponible'),
+(502, 9, '1970-01-01 01:00:00', 'indisponible'),
+(503, 9, '1970-01-01 01:00:00', 'indisponible'),
+(504, 9, '1970-01-01 01:00:00', 'indisponible'),
+(505, 9, '1970-01-01 01:00:00', 'indisponible'),
+(506, 9, '1970-01-01 01:00:00', 'indisponible'),
+(507, 10, '1970-01-01 01:00:00', 'disponible'),
+(508, 10, '1970-01-01 01:00:00', 'disponible'),
+(509, 10, '1970-01-01 01:00:00', 'disponible'),
+(510, 10, '1970-01-01 01:00:00', 'disponible'),
+(511, 10, '1970-01-01 01:00:00', 'disponible'),
+(512, 10, '1970-01-01 01:00:00', 'disponible'),
+(513, 10, '1970-01-01 01:00:00', 'disponible'),
+(514, 10, '1970-01-01 01:00:00', 'disponible'),
+(515, 10, '1970-01-01 01:00:00', 'disponible'),
+(516, 10, '1970-01-01 01:00:00', 'disponible'),
+(517, 10, '1970-01-01 01:00:00', 'disponible'),
+(518, 10, '1970-01-01 01:00:00', 'disponible'),
+(519, 10, '1970-01-01 01:00:00', 'disponible'),
+(520, 10, '1970-01-01 01:00:00', 'disponible'),
+(521, 10, '1970-01-01 01:00:00', 'disponible'),
+(522, 10, '1970-01-01 01:00:00', 'disponible'),
+(523, 10, '1970-01-01 01:00:00', 'disponible'),
+(524, 10, '1970-01-01 01:00:00', 'disponible'),
+(525, 10, '1970-01-01 01:00:00', 'disponible'),
+(526, 10, '1970-01-01 01:00:00', 'disponible'),
+(527, 10, '1970-01-01 01:00:00', 'disponible'),
+(528, 10, '1970-01-01 01:00:00', 'disponible'),
+(529, 10, '1970-01-01 01:00:00', 'disponible'),
+(530, 10, '1970-01-01 01:00:00', 'disponible'),
+(531, 10, '1970-01-01 01:00:00', 'disponible'),
+(532, 10, '1970-01-01 01:00:00', 'disponible'),
+(533, 10, '1970-01-01 01:00:00', 'disponible'),
+(534, 10, '1970-01-01 01:00:00', 'disponible'),
+(535, 10, '1970-01-01 01:00:00', 'disponible'),
+(536, 10, '1970-01-01 01:00:00', 'disponible'),
+(537, 10, '1970-01-01 01:00:00', 'disponible'),
+(538, 10, '1970-01-01 01:00:00', 'disponible'),
+(539, 10, '1970-01-01 01:00:00', 'disponible'),
+(540, 10, '1970-01-01 01:00:00', 'disponible'),
+(541, 10, '1970-01-01 01:00:00', 'disponible'),
+(542, 10, '1970-01-01 01:00:00', 'disponible'),
+(543, 10, '1970-01-01 01:00:00', 'disponible'),
+(544, 10, '1970-01-01 01:00:00', 'disponible'),
+(545, 10, '1970-01-01 01:00:00', 'disponible'),
+(546, 10, '1970-01-01 01:00:00', 'disponible'),
+(547, 10, '1970-01-01 01:00:00', 'disponible'),
+(548, 10, '1970-01-01 01:00:00', 'disponible'),
+(549, 10, '1970-01-01 01:00:00', 'disponible'),
+(550, 10, '1970-01-01 01:00:00', 'disponible'),
+(551, 10, '1970-01-01 01:00:00', 'disponible'),
+(552, 10, '1970-01-01 01:00:00', 'disponible'),
+(553, 10, '1970-01-01 01:00:00', 'disponible'),
+(554, 10, '1970-01-01 01:00:00', 'disponible'),
+(555, 10, '1970-01-01 01:00:00', 'disponible'),
+(556, 10, '1970-01-01 01:00:00', 'disponible'),
+(557, 10, '1970-01-01 01:00:00', 'disponible'),
+(558, 10, '1970-01-01 01:00:00', 'disponible'),
+(559, 10, '1970-01-01 01:00:00', 'disponible'),
+(560, 10, '1970-01-01 01:00:00', 'disponible'),
+(561, 10, '1970-01-01 01:00:00', 'disponible'),
+(562, 10, '1970-01-01 01:00:00', 'disponible'),
+(563, 11, '1970-01-01 01:00:00', 'disponible'),
+(564, 11, '1970-01-01 01:00:00', 'disponible'),
+(565, 11, '1970-01-01 01:00:00', 'disponible'),
+(566, 11, '1970-01-01 01:00:00', 'disponible'),
+(567, 11, '1970-01-01 01:00:00', 'disponible'),
+(568, 11, '1970-01-01 01:00:00', 'disponible'),
+(569, 11, '1970-01-01 01:00:00', 'disponible'),
+(570, 11, '1970-01-01 01:00:00', 'disponible'),
+(571, 11, '1970-01-01 01:00:00', 'disponible'),
+(572, 11, '1970-01-01 01:00:00', 'disponible'),
+(573, 11, '1970-01-01 01:00:00', 'disponible'),
+(574, 11, '1970-01-01 01:00:00', 'disponible'),
+(575, 11, '1970-01-01 01:00:00', 'disponible'),
+(576, 11, '1970-01-01 01:00:00', 'disponible'),
+(577, 11, '1970-01-01 01:00:00', 'disponible'),
+(578, 11, '1970-01-01 01:00:00', 'disponible'),
+(579, 11, '1970-01-01 01:00:00', 'disponible'),
+(580, 11, '1970-01-01 01:00:00', 'disponible'),
+(581, 11, '1970-01-01 01:00:00', 'disponible'),
+(582, 11, '1970-01-01 01:00:00', 'disponible'),
+(583, 11, '1970-01-01 01:00:00', 'disponible'),
+(584, 11, '1970-01-01 01:00:00', 'disponible'),
+(585, 11, '1970-01-01 01:00:00', 'disponible'),
+(586, 11, '1970-01-01 01:00:00', 'disponible'),
+(587, 11, '1970-01-01 01:00:00', 'disponible'),
+(588, 11, '1970-01-01 01:00:00', 'disponible'),
+(589, 11, '1970-01-01 01:00:00', 'disponible'),
+(590, 11, '1970-01-01 01:00:00', 'disponible'),
+(591, 11, '1970-01-01 01:00:00', 'disponible'),
+(592, 11, '1970-01-01 01:00:00', 'disponible'),
+(593, 11, '1970-01-01 01:00:00', 'disponible'),
+(594, 11, '1970-01-01 01:00:00', 'disponible'),
+(595, 11, '1970-01-01 01:00:00', 'disponible'),
+(596, 11, '1970-01-01 01:00:00', 'disponible'),
+(597, 11, '1970-01-01 01:00:00', 'disponible'),
+(598, 11, '1970-01-01 01:00:00', 'disponible'),
+(599, 11, '1970-01-01 01:00:00', 'disponible'),
+(600, 11, '1970-01-01 01:00:00', 'disponible'),
+(601, 11, '1970-01-01 01:00:00', 'disponible'),
+(602, 11, '1970-01-01 01:00:00', 'disponible'),
+(603, 11, '1970-01-01 01:00:00', 'disponible'),
+(604, 11, '1970-01-01 01:00:00', 'disponible'),
+(605, 11, '1970-01-01 01:00:00', 'disponible'),
+(606, 11, '1970-01-01 01:00:00', 'disponible'),
+(607, 11, '1970-01-01 01:00:00', 'disponible'),
+(608, 11, '1970-01-01 01:00:00', 'disponible'),
+(609, 11, '1970-01-01 01:00:00', 'disponible'),
+(610, 11, '1970-01-01 01:00:00', 'disponible'),
+(611, 11, '1970-01-01 01:00:00', 'disponible'),
+(612, 11, '1970-01-01 01:00:00', 'disponible'),
+(613, 11, '1970-01-01 01:00:00', 'disponible'),
+(614, 11, '1970-01-01 01:00:00', 'disponible'),
+(615, 11, '1970-01-01 01:00:00', 'disponible'),
+(616, 11, '1970-01-01 01:00:00', 'disponible'),
+(617, 11, '1970-01-01 01:00:00', 'disponible'),
+(618, 11, '1970-01-01 01:00:00', 'disponible');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `installationssportives`
+--
+
+CREATE TABLE `installationssportives` (
+  `installation_id` int(11) NOT NULL,
+  `nom` varchar(100) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `regles` text DEFAULT NULL,
+  `disponibilite` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `installationssportives`
+--
+
+INSERT INTO `installationssportives` (`installation_id`, `nom`, `description`, `regles`, `disponibilite`) VALUES
+(1, 'Salle de sport A', 'Salle de sport entièrement équipée avec des machines modernes.', 'Interdiction de manger ou de boire.', 'Lundi à Dimanche, 6h à 22h'),
+(2, 'Piscine B', 'Piscine olympique.', 'Douche obligatoire avant d\'entrer dans la piscine.', 'Lundi à Dimanche, 6h à 20h');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `messages`
+--
+
+CREATE TABLE `messages` (
+  `message_id` int(11) NOT NULL,
+  `from_user_id` int(11) NOT NULL,
+  `to_user_id` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `timestamp` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `messages`
+--
+
+INSERT INTO `messages` (`message_id`, `from_user_id`, `to_user_id`, `message`, `timestamp`) VALUES
+(1, 14, 0, 'bonjour', '2024-05-27 11:47:54'),
+(2, 14, 0, 'nfife', '2024-05-27 11:47:58'),
+(3, 14, 1, 'fjvvjjvn', '2024-05-27 12:18:37'),
+(4, 14, 1, 'rnnf', '2024-05-27 12:18:39'),
+(5, 16, 1, 'bonjour', '2024-05-30 08:39:43'),
+(6, 16, 1, 'bonjour', '2024-05-30 08:39:44'),
+(7, 16, 1, 'ca va', '2024-05-30 08:39:52');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `paiements`
+--
+
+CREATE TABLE `paiements` (
+  `paiement_id` int(11) NOT NULL,
+  `utilisateur_id` int(11) NOT NULL,
+  `type_carte` enum('Visa','MasterCard','American Express','PayPal') NOT NULL,
+  `numero_carte` varchar(20) NOT NULL,
+  `nom_carte` varchar(100) NOT NULL,
+  `date_expiration` date NOT NULL,
+  `code_securite` varchar(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `rendezvous`
+--
+
+CREATE TABLE `rendezvous` (
+  `rendezvous_id` int(11) NOT NULL,
+  `utilisateur_id` int(11) DEFAULT NULL,
+  `coach_id` int(11) DEFAULT NULL,
+  `date_rendezvous` datetime DEFAULT NULL,
+  `statut` enum('confirmé','annulé') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `rendezvous`
+--
+
+INSERT INTO `rendezvous` (`rendezvous_id`, `utilisateur_id`, `coach_id`, `date_rendezvous`, `statut`) VALUES
+(1, 1, 1, '2024-06-01 10:00:00', 'confirmé'),
+(2, 1, 1, '2024-06-02 14:00:00', 'annulé'),
+(3, 1, 2, '2024-05-29 10:00:00', 'confirmé'),
+(4, 1, 2, '2024-05-30 10:00:00', 'confirmé'),
+(5, 1, 2, '2024-06-02 09:00:00', 'confirmé'),
+(6, 1, 2, '1970-01-01 01:00:00', 'confirmé'),
+(7, 1, 1, '1970-01-01 01:00:00', 'confirmé'),
+(8, 1, 4, '1970-01-01 01:00:00', 'confirmé'),
+(9, 1, 3, '1970-01-01 01:00:00', 'confirmé'),
+(10, 1, 5, '1970-01-01 01:00:00', 'confirmé'),
+(11, 1, 6, '1970-01-01 01:00:00', 'confirmé'),
+(12, 1, 7, '1970-01-01 01:00:00', 'confirmé'),
+(13, 1, 2, '0000-00-00 00:00:00', 'confirmé'),
+(14, 1, 6, '0000-00-00 00:00:00', 'confirmé'),
+(15, 1, 6, '1970-01-01 01:00:00', 'confirmé'),
+(16, 1, 2, '1970-01-01 01:00:00', 'confirmé'),
+(17, 1, 2, '1970-01-01 01:00:00', 'confirmé'),
+(18, 1, 9, '1970-01-01 01:00:00', 'confirmé');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `utilisateurs`
+--
+
+CREATE TABLE `utilisateurs` (
+  `utilisateur_id` int(11) NOT NULL,
+  `nom` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `mot_de_passe` varchar(255) DEFAULT NULL,
+  `type_utilisateur` enum('client','coach','admin') DEFAULT NULL,
+  `adresse` varchar(255) DEFAULT NULL,
+  `numero_telephone` varchar(20) DEFAULT NULL,
+  `carte_etudiant` varchar(50) DEFAULT NULL,
+  `online` tinyint(1) DEFAULT 0,
+  `prenom` varchar(100) DEFAULT NULL,
+  `adresse_ligne_2` varchar(255) DEFAULT NULL,
+  `ville` varchar(100) DEFAULT NULL,
+  `code_postal` varchar(10) DEFAULT NULL,
+  `pays` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `utilisateurs`
+--
+
+INSERT INTO `utilisateurs` (`utilisateur_id`, `nom`, `email`, `mot_de_passe`, `type_utilisateur`, `adresse`, `numero_telephone`, `carte_etudiant`, `online`, `prenom`, `adresse_ligne_2`, `ville`, `code_postal`, `pays`) VALUES
+(1, 'Alice Dupont', 'alice@example.com', 'motdepasse123', 'client', '123 Rue Elm', '123-456-7890', 'S1234567', 0, NULL, NULL, NULL, NULL, NULL),
+(2, 'Bob Martin', 'bob@example.com', 'motdepasse123', 'coach', '456 Avenue Chêne', '987-654-3210', 'S2345678', 0, NULL, NULL, NULL, NULL, NULL),
+(3, 'Charlie Lebrun', 'charlie@example.com', 'motdepasse123', 'admin', '789 Route Pin', '555-555-5555', 'S3456789', 0, NULL, NULL, NULL, NULL, NULL),
+(4, 'David Biking', 'david@example.com', 'motdepasse123', 'coach', '101 Rue du Velo', '123-111-1111', 'S4567890', 0, NULL, NULL, NULL, NULL, NULL),
+(5, 'Emma Collectifs', 'emma@example.com', 'motdepasse123', 'coach', '102 Rue de Fitness', '123-222-2222', 'S5678901', 0, NULL, NULL, NULL, NULL, NULL),
+(6, 'Frank Basketball', 'frank@example.com', 'motdepasse123', 'coach', '103 Rue de Basket', '123-333-3333', 'S6789012', 0, NULL, NULL, NULL, NULL, NULL),
+(7, 'Grace Football', 'grace@example.com', 'motdepasse123', 'coach', '104 Rue de Foot', '123-444-4444', 'S7890123', 0, NULL, NULL, NULL, NULL, NULL),
+(8, 'Henry Rugby', 'henry@example.com', 'motdepasse123', 'coach', '105 Rue de Rugby', '123-555-5555', 'S8901234', 0, NULL, NULL, NULL, NULL, NULL),
+(9, 'Ivy Tennis', 'ivy@example.com', 'motdepasse123', 'coach', '106 Rue de Tennis', '123-666-6666', 'S9012345', 0, NULL, NULL, NULL, NULL, NULL),
+(10, 'Jack Natation', 'jack@example.com', 'motdepasse123', 'coach', '107 Rue de Natation', '123-777-7777', 'S0123456', 0, NULL, NULL, NULL, NULL, NULL),
+(11, 'Karen Plongeon', 'karen@example.com', 'motdepasse123', 'coach', '108 Rue de Plongeon', '123-888-8888', 'S1234567', 0, NULL, NULL, NULL, NULL, NULL),
+(12, 'Lewis Orel', '123@gmail.com', '$2y$10$S35ze9Jg2Is91D9tjthCPevtYP959U/1Bip7bNcaSon1QaPAEiBEG', 'client', '20 rue sextius michel 75015', '0696111111', '111111111111111', 0, NULL, NULL, NULL, NULL, NULL),
+(13, 'aa', '1234@gmail.com', '$2y$10$dtM7i4AW54NwAqjDnHLV/.SgvuSr4TcxpQgXQmc82EI.TEjTk8xba', 'client', '20 rue sextius michel 75015', '148482828', '123', 1, NULL, NULL, NULL, NULL, NULL),
+(14, 'azerty', '12345@gmail.com', '$2y$10$ZF7WGt4DqKbMPy3zQ7xS1e6YZjwK/H4JFeV6dqGS/JUi0Oj7Gm7M2', 'client', '20 rue sextius michel 75015', '1234', '123', 0, NULL, NULL, NULL, NULL, NULL),
+(15, 'VTR', 'Jevie@gmail.com', '$2y$10$WMVQeg/L1s1gtbz89AJQHuxiktZfYZVrv4oEqUOcaOS.EsAODLiMC', 'coach', '20 rue sextius michel 75015', '0909090909', '12349485', 0, NULL, NULL, NULL, NULL, NULL),
+(16, 'jjsjdhhh', '123456789@gmail.com', '$2y$10$h3pbzeevg1BWVV8JzmGhBeGbJkpFyvY1Zww4l3vVH78QB8a06KIuy', 'client', 'njnjjnj', 'njjninin', 'jnjnin', 0, NULL, NULL, NULL, NULL, NULL),
+(17, 'TEst', 'test@gmail.com', '$2y$10$F8hTC8Y2DzW338aqppewMOteZiV0ukoV5wajibzROwyAW/DcjzMIe', 'admin', '30 rue ', '1111111111', '22222222', 0, 'test', '', 'Paris', '75015', 'France');
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `activitessportives`
+--
+ALTER TABLE `activitessportives`
+  ADD PRIMARY KEY (`activite_id`),
+  ADD UNIQUE KEY `nom` (`nom`),
+  ADD KEY `responsable_id` (`responsable_id`);
+
+--
+-- Index pour la table `coachs`
+--
+ALTER TABLE `coachs`
+  ADD PRIMARY KEY (`coach_id`),
+  ADD KEY `utilisateur_id` (`utilisateur_id`);
+
+--
+-- Index pour la table `creaneaux_horaires`
+--
+ALTER TABLE `creaneaux_horaires`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `coach_id` (`coach_id`);
+
+--
+-- Index pour la table `installationssportives`
+--
+ALTER TABLE `installationssportives`
+  ADD PRIMARY KEY (`installation_id`);
+
+--
+-- Index pour la table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`message_id`);
+
+--
+-- Index pour la table `paiements`
+--
+ALTER TABLE `paiements`
+  ADD PRIMARY KEY (`paiement_id`),
+  ADD KEY `utilisateur_id` (`utilisateur_id`);
+
+--
+-- Index pour la table `rendezvous`
+--
+ALTER TABLE `rendezvous`
+  ADD PRIMARY KEY (`rendezvous_id`),
+  ADD KEY `utilisateur_id` (`utilisateur_id`),
+  ADD KEY `coach_id` (`coach_id`);
+
+--
+-- Index pour la table `utilisateurs`
+--
+ALTER TABLE `utilisateurs`
+  ADD PRIMARY KEY (`utilisateur_id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `activitessportives`
+--
+ALTER TABLE `activitessportives`
+  MODIFY `activite_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT pour la table `coachs`
+--
+ALTER TABLE `coachs`
+  MODIFY `coach_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT pour la table `creaneaux_horaires`
+--
+ALTER TABLE `creaneaux_horaires`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=619;
+
+--
+-- AUTO_INCREMENT pour la table `installationssportives`
+--
+ALTER TABLE `installationssportives`
+  MODIFY `installation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT pour la table `paiements`
+--
+ALTER TABLE `paiements`
+  MODIFY `paiement_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `rendezvous`
+--
+ALTER TABLE `rendezvous`
+  MODIFY `rendezvous_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT pour la table `utilisateurs`
+--
+ALTER TABLE `utilisateurs`
+  MODIFY `utilisateur_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `activitessportives`
+--
+ALTER TABLE `activitessportives`
+  ADD CONSTRAINT `activitessportives_ibfk_1` FOREIGN KEY (`responsable_id`) REFERENCES `coachs` (`coach_id`);
+
+--
+-- Contraintes pour la table `coachs`
+--
+ALTER TABLE `coachs`
+  ADD CONSTRAINT `coachs_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateurs` (`utilisateur_id`);
+
+--
+-- Contraintes pour la table `creaneaux_horaires`
+--
+ALTER TABLE `creaneaux_horaires`
+  ADD CONSTRAINT `creaneaux_horaires_ibfk_1` FOREIGN KEY (`coach_id`) REFERENCES `coachs` (`coach_id`);
+
+--
+-- Contraintes pour la table `paiements`
+--
+ALTER TABLE `paiements`
+  ADD CONSTRAINT `paiements_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateurs` (`utilisateur_id`);
+
+--
+-- Contraintes pour la table `rendezvous`
+--
+ALTER TABLE `rendezvous`
+  ADD CONSTRAINT `rendezvous_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateurs` (`utilisateur_id`),
+  ADD CONSTRAINT `rendezvous_ibfk_2` FOREIGN KEY (`coach_id`) REFERENCES `coachs` (`coach_id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

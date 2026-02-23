@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salle de sport Omnes - Sportify</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .salle-details {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            border-radius: 20px;
+            border: 2px solid #ccc;
+            border-image: url('border.png') 20 round;
+            background-color: #f9f9f9;
+        }
+
+        
+        .salle-info {
+            margin-left: 20px;
+        }
+
+        .salle-image {
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .salle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .salle-details {
+                flex-direction: column;
+            }
+
+            .salle-image {
+                width: 100px;
+                height: 100px;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .salle-info {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1><span class="highlight">Sportify:</span> Consultation Sportive</h1>
+            <img src="logo.png" alt="Sportify Logo">
+        </header>
+        <nav class="navigation">
+            <button onclick="location.href='index.html'">Accueil</button>
+            <button onclick="location.href='tout-parcourir.html'">Tout Parcourir</button>
+            <button onclick="location.href='recherche.html'">Recherche</button>
+            <button onclick="location.href='rendez-vous.html'">Rendez-vous</button>
+            <button onclick="location.href='votre-compte.html'">Votre Compte</button>
+        </nav>
+        <section class="section">
+            <h2>Salle de sport Omnes</h2>
+            <div class="salle-details">
+                <div class="salle-image">
+                    <img src="salle-omnes.jpg" alt="Salle Omnes">
+                </div>
+                <div class="salle-info">
+                    <p>Numéro de la salle: 123</p>
+                    <p>Téléphone: 01 23 45 67 89</p>
+                    <p>Email: salle.omnes@sportify.com</p>
+                    <button onclick="showServices()">Nos services</button>
+                </div>
+            </div>
+            <div id="services" style="display: none;">
+                <h3>Nos services</h3>
+                <ul>
+                    <li><a href="#">Personnels de la salle de sport</a></li>
+                    <li><a href="#">Horaire de la gym</a></li>
+                    <li><a href="#">Règles sur l’utilisation des machines</a></li>
+                    <li><a href="#">Nouveaux clients</a></li>
+                    <li><a href="#">Alimentation et nutrition</a></li>
+                </ul>
+            </div>
+        </section>
+        <footer class="footer">
+            <!-- Footer Content -->
+        </footer>
+    </div>
+
+    <script>
+        function showServices() {
+            var servicesDiv = document.getElementById("services");
+            if (servicesDiv.style.display === "none") {
+                servicesDiv.style.display = "block";
+            } else {
+                servicesDiv.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

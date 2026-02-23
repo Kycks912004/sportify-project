@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportify: Consultation Sportive</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1><span class="highlight">Sportify:</span> Consultation Sportive</h1>
+            <img src="logo.png" alt="Sportify Logo">
+        </header>
+        <nav class="navigation">
+            <button onclick="window.location.href='index.html'">Accueil</button>
+            <button onclick="window.location.href='tout-parcourir.html'">Tout Parcourir</button>
+            <button onclick="window.location.href='recherche.php'">Recherche</button>
+            <button onclick="window.location.href='rendez_vous.html'">Rendez-vous</button>
+            <button onclick="window.location.href='compte.html'">Votre Compte</button>
+        </nav>
+        <section class="section">
+            <div class="content-wrapper">
+                <div class="welcome">
+                    <h2>Bienvenue sur Sportify!</h2>
+                    <p>Votre plateforme de consultation sportive en ligne pour la communauté d'Omnes Education.</p>
+                </div>
+                <div class="event-week">
+                    <h2>Evènement de la semaine</h2>
+                    <p>Rejoignez-nous pour le match de rugby entre Omnes Education et les Visiteurs ce samedi à 15h00.</p>
+                </div>
+            </div>
+            <div class="carousel">
+                <h2>Nos spécialistes</h2>
+                <div class="carousel-images">
+                    <div><img src="1.jpg" alt="Basket"></div>
+                    <div><img src="5.jpg" alt="Tennis"></div>
+                    <div><img src="2.jpg" alt="Football"></div>
+                    <div><img src="3.jpg" alt="Rugby"></div>
+		    <div><img src="4.jpg" alt="Natation"></div>
+                    <div><img src="musculation.jpg" alt="Musculation"></div>
+                </div>
+                <!-- Boutons de navigation -->
+                <div class="carousel-buttons">
+                    <button class="prev-button">Previous</button>
+                    <button class="next-button">Next</button>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="contact-info">
+                <h2>Contactez-nous</h2>
+                <p>Email: contact@sportify.com</p>
+                <p>Téléphone: 01 23 45 67 89</p>
+                <p>Adresse: 10 rue Sextius Michel 75015 Paris, France</p>
+            </div>
+            <div class="map">
+                <h2>Notre Adresse</h2>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.935874220475!2d2.2885659!3d48.8512252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6701b4f58251b%3A0x167f5a60fb94aa76!2sECE%20-%20Ecole%20d'ing%C3%A9nieurs%20-%20Campus%20de%20Paris!5e0!3m2!1sen!2sfr!4v1593582738147!5m2!1sen!2sfr" 
+                    width="600" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

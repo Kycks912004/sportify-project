@@ -1,0 +1,71 @@
+-- Créer la base de données
+CREATE DATABASE Sportify;
+
+-- Utiliser la base de données Sportify
+USE Sportify;
+
+-- Créer les tables
+CREATE TABLE Utilisateurs (
+    utilisateur_id INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    mot_de_passe VARCHAR(255),
+    type_utilisateur ENUM('client', 'coach', 'admin'),
+    adresse VARCHAR(255),
+    numero_telephone VARCHAR(20),
+    carte_etudiant VARCHAR(50)
+);
+
+CREATE TABLE Coachs (
+    coach_id INT PRIMARY KEY AUTO_INCREMENT,
+    utilisateur_id INT,
+    specialite VARCHAR(100),
+    disponibilite TEXT,
+    bio TEXT,
+    photo VARCHAR(255),
+    FOREIGN KEY (utilisateur_id) REFERENCES Utilisateurs(utilisateur_id)
+);
+
+CREATE TABLE RendezVous (
+    rendezvous_id INT PRIMARY KEY AUTO_INCREMENT,
+    utilisateur_id INT,
+    coach_id INT,
+    date_rendezvous DATETIME,
+    statut ENUM('confirmé', 'annulé'),
+    FOREIGN KEY (utilisateur_id) REFERENCES Utilisateurs(utilisateur_id),
+    FOREIGN KEY (coach_id) REFERENCES Coachs(coach_id)
+);
+
+CREATE TABLE InstallationsSportives (
+    installation_id INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(100),
+    description TEXT,
+    regles TEXT,
+    disponibilite TEXT
+);
+
+-- Insérer des données dans la table Utilisateurs
+INSERT INTO Utilisateurs (nom, email, mot_de_passe, type_utilisateur, adresse, numero_telephone, carte_etudiant)
+VALUES 
+('Alice Dupont', 'alice@example.com', 'motdepasse123', 'client', '123 Rue Elm', '123-456-7890', 'S1234567'),
+('Bob Martin', 'bob@example.com', 'motdepasse123', 'coach', '456 Avenue Chêne', '987-654-3210', 'S2345678'),
+('Charlie Lebrun', 'charlie@example.com', 'motdepasse123', 'admin', '789 Route Pin', '555-555-5555', 'S3456789');
+
+
+
+-- Insérer des données dans la table Coachs
+INSERT INTO Coachs (utilisateur_id, specialite, disponibilite, bio, photo)
+VALUES 
+(2, 'Fitness', 'Lundi à Vendredi, 9h à 17h', 'Coach de fitness expérimenté.', 'coach1.jpg');
+
+-- Insérer des données dans la table RendezVous
+INSERT INTO RendezVous (utilisateur_id, coach_id, date_rendezvous, statut)
+VALUES 
+(1, 1, '2024-06-01 10:00:00', 'confirmé'),
+(1, 1, '2024-06-02 14:00:00', 'annulé');
+
+-- Insérer des données dans la table InstallationsSportives
+INSERT INTO InstallationsSportives (nom, description, regles, disponibilite)
+VALUES 
+('Salle de sport A', 'Salle de sport entièrement équipée avec des machines modernes.', 'Interdiction de manger ou de boire.', 'Lundi à Dimanche, 6h à 22h'),
+('Piscine B', 'Piscine olympique.', 'Douche obligatoire avant d\'entrer dans la piscine.', 'Lundi à Dimanche, 6h à 20h');

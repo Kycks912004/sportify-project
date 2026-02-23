@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tout Parcourir - Sportify</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            margin: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            font-size: 1.5em;
+            margin: 15px 0;
+        }
+
+        .card p {
+            padding: 0 15px;
+            color: #666;
+        }
+
+        .card a {
+            display: inline-block;
+            margin: 15px 0;
+            padding: 10px 20px;
+            background-color: #ff6600;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .card a:hover {
+            background-color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1><span class="highlight">Sportify:</span> Consultation Sportive</h1>
+            <img src="logo.png" alt="Sportify Logo">
+        </header>
+        <nav class="navigation">
+            <button onclick="location.href='index.html'">Accueil</button>
+            <button onclick="location.href='tout-parcourir.html'">Tout Parcourir</button>
+            <button onclick="location.href='recherche.html'">Recherche</button>
+            <button onclick="location.href='rendez-vous.html'">Rendez-vous</button>
+            <button onclick="location.href='votre-compte.html'">Votre Compte</button>
+        </nav>
+        <section class="section">
+            <h2>Tout Parcourir</h2>
+            <p>Il s’agit de tous les catégories des services disponibles chez Sportify.</p>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Activités sportives</h3>
+					<img src="as.jpg" alt="Activités Sportives">
+                    <p>Découvrez nos activités sportives ouvertes à tous les membres de l’Omnes Education.</p>
+                    <a href="activites-sportives.html">En savoir plus</a>
+                </div>
+                <div class="card">
+                    <h3>Les Sports de compétition</h3>
+					<img src="compet.jpg" alt="Les Sports de compétition">
+                    <p>Trouvez toutes les catégories de sports compétitifs disponibles chez Sportify.</p>
+                    <a href="sports-competition.html">En savoir plus</a>
+                </div>
+                <div class="card">
+                    <h3>Salle de sport Omnes</h3>
+					<img src="salle-omnes.jpg" alt="Salle de sport Omnes">
+                    <p>Informations sur la salle de sport Omnes, ses règles et ses services.</p>
+                    <a href="salle-de-sport-omnes.html">En savoir plus</a>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <!-- Footer Content -->
+        </footer>
+    </div>
+</body>
+</html>

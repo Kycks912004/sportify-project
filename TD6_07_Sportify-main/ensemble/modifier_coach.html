@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier Coach</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        .form-container h2 {
+            margin-top: 0;
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="file"] {
+            padding: 3px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group input[type="submit"] {
+            background-color: #5cb85c;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+        .form-group input[type="submit"]:active {
+            background-color: #45a045;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Modifier Coach</h2>
+        <form id="edit-coach-form" action="modifier_coach.php" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="coach_id">ID du Coach :</label>
+                <input type="text" id="coach_id" name="coach_id" required>
+            </div>
+            <div class="form-group">
+                <label for="utilisateur_id">ID de l'Utilisateur :</label>
+                <input type="text" id="utilisateur_id" name="utilisateur_id" required>
+            </div>
+            <div class="form-group">
+                <label for="specialite">Spécialité :</label>
+                <input type="text" id="specialite" name="specialite" required>
+            </div>
+            <div class="form-group">
+                <label for="disponibilite">Disponibilité :</label>
+                <textarea id="disponibilite" name="disponibilite" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="bio">Bio :</label>
+                <textarea id="bio" name="bio" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="photo">Photo :</label>
+                <input type="file" id="photo" name="photo" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="xml_file">Fichier XML :</label>
+                <input type="file" id="xml_file" name="xml_file" accept=".xml">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Modifier Coach">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const coachId = urlParams.get('coach_id');
+
+            if (coachId) {
+                fetch(`get_coach.php?coach_id=${coachId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('coach_id').value = data.coach_id;
+                        document.getElementById('utilisateur_id').value = data.utilisateur_id;
+                        document.getElementById('specialite').value = data.specialite;
+                        document.getElementById('disponibilite').value = data.disponibilite;
+                        document.getElementById('bio').value = data.bio;
+                    });
+            }
+
+            document.getElementById('edit-coach-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+
+                fetch('modifier_coach.php', {
+                    method: 'POST',
+                    body: formData
+                }).then(response => response.text())
+                .then(result => {
+                    alert(result); // Affiche le message de confirmation ou d'erreur
+                    if (result.includes('succès')) {
+                        window.location.href = 'compte.html';
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    alert('Erreur lors de la modification du coach.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

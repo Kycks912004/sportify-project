@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visioconférence avec un spécialiste</title>
+</head>
+<body>
+    <div id="jitsi-meet-container"></div>
+    <script src="https://meet.jit.si/external_api.js"></script>
+    <script>
+        const domain = "meet.jit.si";
+        const options = {
+            roomName: "NomDeVotreSalleDeChatUnique",
+            width: 700,
+            height: 700,
+            parentNode: document.querySelector('#jitsi-meet-container')
+        };
+        const api = new JitsiMeetExternalAPI(domain, options);
+    </script>
+</body>
+</html>

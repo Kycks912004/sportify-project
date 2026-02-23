@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tout Parcourir - Sportify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1><span class="highlight">Sportify:</span> Consultation Sportive</h1>
+            <img src="logo.png" alt="Sportify Logo">
+        </header>
+        <nav class="navigation">
+            <button onclick="location.href='recherche.html'">Recherche</button>
+            <button onclick="location.href='rendez-vous.html'">Rendez-vous</button>
+            <button onclick="location.href='votre-compte.html'">Votre Compte</button>
+        </nav>
+        <section class="section">
+            <h2>Tout Parcourir</h2>
+            <p>Il s’agit de tous les catégories des services disponibles chez Sportify.</p>
+            <div id="activity-container"></div>
+        </section>
+        <footer class="footer">
+            <!-- Footer Content -->
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('sportives-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            fetchActivities('sportives');
+        });
+
+        document.getElementById('competition-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            fetchActivities('competition');
+        });
+
+        function fetchActivities(type) {
+            fetch(`fetch_activities.php?type=${type}`)
+                .then(response => response.json())
+                .then(data => {
+                    let html = '';
+                    data.forEach(activity => {
+                        html += `
+                            <div class="activity">
+                                <h3>${activity.nom}</h3>
+                                <img src="${activity.coach_photo}" alt="${activity.coach_nom}">
+                                <h4>${activity.coach_nom}</h4>
+                                <p>Bureau: ${activity.bureau}</p>
+                                <p>Disponibilité: ${activity.coach_disponibilite}</p>
+                                <p>CV: ${activity.coach_cv}</p>
+                                <button>Envoyer un message</button>
+                            </div>
+                        `;
+                    });
+                    document.getElementById('activity-container').innerHTML = html;
+                });
+        }
+    </script>
+</body>
+</html>

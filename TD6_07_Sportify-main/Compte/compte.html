@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportify: Votre Compte</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1><span class="highlight">Sportify:</span> Votre Compte</h1>
+        </header>
+        <nav class="navigation">
+            <button onclick="window.location.href='index.html'">Accueil</button>
+            <button onclick="window.location.href='parcourir.html'">Tout Parcourir</button>
+            <button onclick="window.location.href='recherche.html'">Recherche</button>
+            <button onclick="window.location.href='rendezvous.html'">Rendez-vous</button>
+            <button class="active">Votre Compte</button>
+        </nav>
+        <section class="section">
+            <div class="account-info">
+                <h2>Bienvenue, <span id="user-name">Utilisateur</span></h2>
+                <p id="user-email">Email: user@example.com</p>
+                <p id="user-type">Type de compte: Client</p>
+                <div class="account-actions">
+                    <button onclick="window.location.href='edit_account.html'">Modifier Profil</button>
+                    <button onclick="logout()">Déconnexion</button>
+                </div>
+            </div>
+            <div class="appointments">
+                <h2>Vos Rendez-vous</h2>
+                <ul id="appointment-list">
+                    <!-- Les rendez-vous seront chargés ici -->
+                </ul>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="contact-info">
+                <h2>Contactez-nous</h2>
+                <p>Email: contact@sportify.com</p>
+                <p>Téléphone: 01 23 45 67 89</p>
+                <p>Adresse: 10 rue Sextius Michel, 75015 Paris</p>
+            </div>
+        </footer>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<?php
+// Connexion à la base de données
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "sportify";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Récupérer les activités sportives et les coachs associés
+$sql = "SELECT a.nom AS activite, c.coach_id, u.nom AS coach_nom, c.photo, c.disponibilite, c.bio 
+        FROM activitessportives a 
+        JOIN coachs c ON a.responsable_id = c.coach_id 
+        JOIN utilisateurs u ON c.utilisateur_id = u.utilisateur_id";
+$result = $conn->query($sql);
+
+$activities = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $activities[$row['activite']] = [
+            'coach_id' => $row['coach_id'],
+            'coach_nom' => $row['coach_nom'],
+            'photo' => $row['photo'],
+            'disponibilite' => $row['disponibilite'],
+            'bio' => $row['bio']
+        ];
+    }
+}
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activités sportives - Sportify</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1><span class="highlight">Sportify:</span> Consultation Sportive</h1>
+            <img src="logo.png" alt="Sportify Logo">
+        </header>
+        <nav class="navigation">
+            <button onclick="location.href='index.html'">Accueil</button>
+            <button onclick="location.href='tout-parcourir.html'">Tout Parcourir</button>
+            <button onclick="location.href='recherche.html'">Recherche</button>
+            <button onclick="location.href='rendez-vous.html'">Rendez-vous</button>
+            <button onclick="location.href='votre-compte.html'">Votre Compte</button>
+        </nav>
+        <section class="section">
+            <h2>Activités sportives</h2>
+            <ul>
+                <?php foreach ($activities as $activite => $details): ?>
+                    <li><a href="#" onclick="showCoachDetails('<?php echo $activite; ?>')"><?php echo $activite; ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+            <div id="coach-details"></div>
+        </section>
+        <footer class="footer">
+            <!-- Footer Content -->
+        </footer>
+    </div>
+    <script>
+        var activities = <?php echo json_encode($activities); ?>;
+
+        function showCoachDetails(activity) {
+            var coach = activities[activity];
+            if (coach) {
+                var details = `
+                    <h3>Coach Responsable</h3>
+                    <p><strong>Nom:</strong> ${coach.coach_nom}</p>
+                    <img src="${coach.photo}" alt="${coach.coach_nom}" style="width:200px;height:200px;">
+                    <p><strong>Disponibilité:</strong> ${coach.disponibilite}</p>
+                    <p><strong>Bio:</strong> ${coach.bio}</p>
+                `;
+                document.getElementById("coach-details").innerHTML = details;
+            }
+        }
+    </script>
+</body>
+</html>

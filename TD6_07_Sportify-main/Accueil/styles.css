@@ -1,0 +1,209 @@
+/* Font import */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('background.png') no-repeat center center fixed; /* Ajouter l'image de fond */
+    background-size: cover; /* Couvrir tout l'écran */
+    color: #333;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgba(255, 255, 255, 0.8); /* Couleur de fond semi-transparente pour le wrapper */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.header {
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+.header .highlight {
+    color: #ffd700;
+}
+
+.header img {
+    height: 50px;
+}
+
+.navigation {
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    padding: 20px 0; /* Augmenter la taille de la barre de navigation */
+}
+
+.navigation button {
+    background-color: #ff7e5f;
+    color: white;
+    border: none;
+    padding: 15px 30px; /* Augmenter la taille des boutons */
+    margin: 0 10px;
+    border-radius: 25px;
+    font-size: 18px; /* Augmenter la taille de la police */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.navigation button:hover {
+    background-color: #feb47b;
+    transform: scale(1.05);
+}
+
+.section {
+    flex: 1;
+    padding: 40px 20px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.welcome, .event-week {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    background-color: #f4f4f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.welcome {
+    margin-right: 20px; /* Espacement entre les deux sections */
+}
+
+.event-week {
+    margin-left: 20px; /* Espacement entre les deux sections */
+}
+
+.carousel {
+    margin-bottom: 40px;
+}
+
+.carousel-images {
+    display: flex;
+    justify-content: center;
+    margin: 0 -10px;
+}
+
+.carousel-images div {
+    margin: 0 5px;
+}
+
+.carousel-images img {
+    width: 250px; /* Agrandir les images */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.carousel-images img:hover {
+    transform: scale(1.1);
+}
+
+.carousel-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Espacement entre les images et les boutons */
+}
+
+.carousel-buttons button {
+    background-color: #ff7e5f;
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Taille des boutons */
+    margin: 0 5px; /* Espacement entre les boutons */
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.carousel-buttons button:hover {
+    background-color: #feb47b;
+    transform: scale(1.05);
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 4px solid #ff7e5f;
+}
+
+.contact-info {
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+.map {
+    height: 300px;
+    margin-top: 20px;
+}
+
+.map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .navigation button {
+        padding: 10px;
+        margin: 0 5px;
+        font-size: 14px;
+    }
+    
+    .section {
+        font-size: 1.2rem;
+        padding: 20px 10px;
+    }
+
+    .carousel-images img {
+        width: 150px;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    .welcome, .event-week {
+        margin: 10px 0;
+    }
+}
