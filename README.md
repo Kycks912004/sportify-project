@@ -1,25 +1,57 @@
+
 # 🏋️ Sportify - Plateforme de Coaching Sportif
-**Projet de Développement Web & Bases de Données**
+
+**Projet de Développement Web & Bases de Données (ECE Paris)**
 
 ## 📌 Présentation
-Sportify est une application web complète permettant la mise en relation entre des coachs sportifs et des clients. Le projet simule une plateforme de réservation et de suivi sportif avec une gestion dynamique des utilisateurs.
+
+**Sportify** est une application web interactive conçue pour faciliter la mise en relation entre des coachs sportifs et leurs clients. La plateforme permet de gérer des profils de coachs dans diverses disciplines (musculation, natation, fitness, etc.), de consulter leurs disponibilités et de prendre rendez-vous directement en ligne.
 
 ## 🛠️ Fonctionnalités Clés
-* [cite_start]**Gestion des Utilisateurs :** Inscription et connexion sécurisée pour les clients et les coachs[cite: 12].
-* [cite_start]**Base de Données (BDD) :** Stockage des profils, des créneaux de coaching et des réservations via SQL[cite: 8].
-* [cite_start]**Interface Interactive :** Consultation des services sportifs et prise de rendez-vous en ligne[cite: 30].
-* [cite_start]**Design Responsive :** Interface adaptée aux ordinateurs et tablettes (HTML/CSS/JS)[cite: 12].
+
+* 
+**Système de Réservation :** Prise de rendez-vous dynamique avec gestion des créneaux horaires (`horaire_salle.php`, `initialize_creneaux.php`).
+
+
+* 
+**Catalogue Multisport :** Recherche de coachs par spécialités : Fitness, Musculation, Natation, Basket, Rugby, etc.
+
+
+* 
+**Espace Utilisateur Complet :** Inscription et connexion sécurisées (`signup.php`, `login.php`) pour les clients et les coachs.
+
+
+* 
+**Communication Intégrée :** Système de messagerie et formulaires de contact (`send_message.php`, `chat.php`).
+
+
+* **Administration :** Interface dédiée pour la gestion des coachs et des services (`ajouter_coach.php`, `modifier_coach.php`).
 
 ## 💻 Technologies Utilisées
-* [cite_start]**Frontend :** HTML5, CSS3, JavaScript[cite: 12].
-* [cite_start]**Backend :** PHP pour la logique serveur et les interactions BDD[cite: 12].
-* [cite_start]**Bases de données :** SQL (MySQL) pour la persistance des données[cite: 8].
-* [cite_start]**Outils :** VS Code, Git[cite: 14].
 
-## 📂 Structure du Projet
-* `/sql` : Scripts de création et d'initialisation de la base de données.
-* `/php` : Scripts de traitement des formulaires et requêtes serveurs.
-* `/css` & `/js` : Fichiers de style et scripts d'interactivité.
-* `index.php` : Page d'accueil principale du site.
+* 
+**Frontend :** Architecture moderne en HTML5, CSS3 et JavaScript pour une interface fluide et responsive.
 
----
+
+* 
+**Backend :** Logique serveur développée en **PHP** pour la gestion dynamique du contenu.
+
+
+* 
+**Base de Données :** Gestion des données utilisateurs et des réservations via **SQL**.
+
+
+* 
+**Outils :** Développement effectué sous VS Code avec versionnage Git.
+
+
+
+## 📂 Architecture du Projet
+
+D'après l'organisation des fichiers, le projet est structuré comme suit :
+
+* **Racine :** Pages principales (`index.php`), gestion des sessions (`login.php`, `signup.php`) et logique de réservation (`rdv.php`, `reserve.php`).
+* **Logique Coach :** Fichiers spécifiques pour l'affichage des profils (`coach_profile.php`) et la gestion administrative (`ajouter_coach.php`).
+* **Ressources :** Dossiers dédiés pour le traitement des mails (`PHPMailer`), les fichiers médias (`uploads`) et les données structurées (`XML`).
+* **Assets :** Styles CSS personnalisés (`styles.css`) et scripts dynamiques (`script.js`).
+
