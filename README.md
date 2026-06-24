@@ -1,5 +1,6 @@
-[![Interface](https://img.shields.io/badge/HTML5-Voir%20l'interface-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://github.com/Kycks912004/sportify-project/blob/main/TD6_07_Sportify-main/Accueil/index.html)
-[![GitHub](https://img.shields.io/badge/GitHub-Code%20Source-181717?style=for-the-badge&logo=github)](https://github.com/Kycks912004/sportify-project)
+[![Site Live](https://img.shields.io/badge/🌐_Site-Live_GitHub_Pages-4CAF50?style=for-the-badge)](https://kycks912004.github.io/sportify-project/)
+[![Interface](https://img.shields.io/badge/HTML5-Code%20Source-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://github.com/Kycks912004/sportify-project/tree/main/TD6_07_Sportify-main/ensemble)
+[![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?style=for-the-badge&logo=github)](https://github.com/Kycks912004/sportify-project)
 
 # 🏋️ Sportify - Plateforme de Coaching Sportif
 
@@ -44,6 +45,11 @@
 
 
 * **Administration :** Interface dédiée pour la gestion des coachs et des services (`ajouter_coach.php`, `modifier_coach.php`).
+
+## 👤 Auteur
+
+**Kylian Pinto** — ECE Paris · Mazloum · Orel · Chekroun  
+[![GitHub](https://img.shields.io/badge/GitHub-Kycks912004-181717?style=flat&logo=github)](https://github.com/Kycks912004)
 
 ## 💻 Technologies Utilisées
 
