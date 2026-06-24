@@ -1,7 +1,23 @@
 [![Interface](https://img.shields.io/badge/HTML5-Voir%20l'interface-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://github.com/Kycks912004/sportify-project/blob/main/TD6_07_Sportify-main/Accueil/index.html)
-
+[![GitHub](https://img.shields.io/badge/GitHub-Code%20Source-181717?style=for-the-badge&logo=github)](https://github.com/Kycks912004/sportify-project)
 
 # 🏋️ Sportify - Plateforme de Coaching Sportif
+
+## 🖼️ Aperçu du Projet
+
+<div align="center">
+
+| Page d'accueil | Login | Recherche |
+|:-:|:-:|:-:|
+| ![Accueil](https://raw.githubusercontent.com/Kycks912004/sportify-project/main/TD6_07_Sportify-main/PJ_WEB_2024_MAZLOUM_PINTO_OREL_CHEKROUN/Storyboard/Accueil.jpg) | ![Login](https://raw.githubusercontent.com/Kycks912004/sportify-project/main/TD6_07_Sportify-main/PJ_WEB_2024_MAZLOUM_PINTO_OREL_CHEKROUN/Storyboard/Login.jpg) | ![Recherche](https://raw.githubusercontent.com/Kycks912004/sportify-project/main/TD6_07_Sportify-main/PJ_WEB_2024_MAZLOUM_PINTO_OREL_CHEKROUN/Storyboard/Recherche.jpg) |
+
+| Activités | Mon compte | Tout parcourir |
+|:-:|:-:|:-:|
+| ![Activités](https://raw.githubusercontent.com/Kycks912004/sportify-project/main/TD6_07_Sportify-main/PJ_WEB_2024_MAZLOUM_PINTO_OREL_CHEKROUN/Storyboard/Acivit%C3%A9s_sportives.jpg) | ![Compte](https://raw.githubusercontent.com/Kycks912004/sportify-project/main/TD6_07_Sportify-main/PJ_WEB_2024_MAZLOUM_PINTO_OREL_CHEKROUN/Storyboard/Votre%20compte.jpg) | ![Parcourir](https://raw.githubusercontent.com/Kycks912004/sportify-project/main/TD6_07_Sportify-main/PJ_WEB_2024_MAZLOUM_PINTO_OREL_CHEKROUN/Storyboard/tout_parcourir.jpg) |
+
+</div>
+
+---
 
 **Projet de Développement Web & Bases de Données (ECE Paris)**
 
